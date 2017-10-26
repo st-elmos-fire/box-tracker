@@ -6,23 +6,23 @@ class App extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      number: '',
+      number: null,
       location: '',
       boxes: []
-    } 
+    }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   componentDidMount () {
     const boxesRef = fire.database().ref('Boxes')
-    boxesRef.on('value', (snapshot) => {
+    boxesRef.orderByChild('number').on('value', (snapshot) => {
       let boxes = snapshot.val()
       let newState = []
       for (let box in boxes) {
         newState.push({
           id: box,
-          number: boxes[box].number,
+          number: parseInt(boxes[box].number),
           location: boxes[box].location,
           contents: boxes[box].contents
         })
@@ -43,13 +43,13 @@ class App extends Component {
     e.preventDefault()
     const boxesRef = fire.database().ref('Boxes')
     const box = {
-      number: this.state.number,
+      number: parseInt(this.state.number),
       location: this.state.location,
       contents: this.state.contents.split('\n')
     }
     boxesRef.push(box)
     this.setState({
-      number: '',
+      number: null,
       location: '',
       contents: ''
     })
@@ -57,7 +57,6 @@ class App extends Component {
 
   removeBox (boxId) {
     const boxRef = fire.database().ref(`/Boxes/${boxId}`)
-    console.log(boxRef)
     boxRef.remove()
   }
 
@@ -65,12 +64,35 @@ class App extends Component {
     this.state.boxes.map((box) => {
       if (box.id === boxId) {
         this.setState({
-          number: box.number,
+          number: parseInt(box.number),
           location: box.location,
           contents: box.contents.join(',').replace(/,/g, '\n')
         })
         this.removeBox(boxId)
       }
+    })
+  }
+
+  // Renders a sorted list of boxes in order of box number
+  showBoxes () {
+    return [].concat(this.state.boxes)
+    .sort((a, b) => a.number > b.number)
+    .map((box) => {
+      return (
+        <li key={box.id} className={`box to-${box.location.toLowerCase().replace(' ', '-')}`}>
+          <h2>Box #: {box.number}</h2>
+          <span className='destination'>{box.location}</span>
+          <ul>
+            {box.contents.map((item) => {
+              return (
+                <li key={item}>{item}</li>
+              )
+            })}
+          </ul>
+          <button onClick={() => this.editBox(box.id)}>Edit Box</button>
+          <button onClick={() => this.removeBox(box.id)}>Delete Box</button>
+        </li>
+      )
     })
   }
 
@@ -106,23 +128,7 @@ class App extends Component {
           <button>Update box </button>
         </form>
         <ul>
-          {this.state.boxes.map((box) => {
-            return (
-              <li key={box.id} className={`box to-${box.location.toLowerCase().replace(' ', '-')}`}>
-                <h2>Box #: {box.number}</h2>
-                <span className='destination'>{box.location}</span>
-                <ul>
-                  {box.contents.map((item) => {
-                    return (
-                      <li key={item}>{item}</li>
-                    )
-                  })}
-                </ul>
-                <button onClick={() => this.editBox(box.id)}>Edit Box</button>
-                <button onClick={() => this.removeBox(box.id)}>Delete Box</button>
-              </li>
-            )
-          })}
+          { this.showBoxes() }
         </ul>
       </div>
     )
