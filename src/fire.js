@@ -7,5 +7,8 @@ var config = {
     storageBucket: "box-tracker-6cacd.appspot.com",
     messagingSenderId: "988150519742"
 };
-var fire = firebase.initializeApp(config);
-export default fire;
+var fire = firebase.initializeApp(config)
+
+export const provider = new firebase.auth.GoogleAuthProvider()
+export const auth = firebase.auth()
+export default fire

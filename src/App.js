@@ -1,4 +1,3 @@
-
 import React, { Component } from 'react'
 import fire from './fire'
 import Logo from './Logo.png'
@@ -112,13 +111,13 @@ class App extends Component {
               <option>Select room</option>
               <option value='Kitchen'>Kitchen</option>
               <option value='Dining Room'>Dining Room</option>
-              <option value='Store Room'>Store Room</option>
+              <option value='Box Room'>Box Room</option>
               <option value='Living Room'>Living Room</option>
               <option value='Bathroom'>Bathroom</option>
-              <option value='Bedroom 1'>Bedroom 1</option>
-              <option value='Bedroom 2'>Bedroom 2</option>
-              <option value='Bedroom 3'>Bedroom 3</option>
-              <option value='Bedroom 4'>Bedroom 4</option>
+              <option value='Master Bedroom'>Master Bedroom</option>
+              <option value='Guest Room'>Guest Room</option>
+              <option value='Cols Room'>Cols Room</option>
+              <option value='Als Room'>Als Room</option>
               <option value='Garden Shed'>Garden Shed</option>
             </select>
           </div>
