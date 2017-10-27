@@ -23,7 +23,7 @@ class App extends Component {
       for (let box in boxes) {
         newState.push({
           id: box,
-          number: parseInt(boxes[box].number),
+          number: parseInt(boxes[box].number, 10),
           location: boxes[box].location,
           contents: boxes[box].contents
         })
@@ -65,7 +65,7 @@ class App extends Component {
     this.state.boxes.map((box) => {
       if (box.id === boxId) {
         this.setState({
-          number: parseInt(box.number),
+          number: parseInt(box.number, 10),
           location: box.location,
           contents: box.contents.join(',').replace(/,/g, '\n')
         })
