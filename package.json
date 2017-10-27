@@ -1,6 +1,6 @@
 {
   "name": "box-tracker",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "private": true,
   "dependencies": {
     "firebase": "^4.6.0",
