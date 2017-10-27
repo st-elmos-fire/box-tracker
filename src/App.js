@@ -77,7 +77,7 @@ class App extends Component {
   // Renders a sorted list of boxes in order of box number
   showBoxes () {
     return [].concat(this.state.boxes)
-    .sort((a, b) => a.number > b.number)
+    .sort((a, b) => parseInt(a.number, 10) - parseInt(b.number, 10))
     .map((box) => {
       return (
         <li key={box.id} className={`box to-${box.location.toLowerCase().replace(' ', '-')}`}>
