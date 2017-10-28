@@ -54,6 +54,23 @@ class App extends Component {
       contents: ''
     })
   }
+  
+  // TODO: Refactor
+  // claimBox (e, number) {
+  //   e.preventDefault()
+  //   const boxesRef = fire.database().ref('Boxes')
+  //   const box = {
+  //     number: number,
+  //     location: 'Unassigned',
+  //     contents: ''
+  //   }
+  //   boxesRef.push(box)
+  //   this.setState({
+  //     number: null,
+  //     location: '',
+  //     contents: ''
+  //   })
+  // }
 
   removeBox (boxId) {
     const boxRef = fire.database().ref(`/Boxes/${boxId}`)
@@ -96,6 +113,15 @@ class App extends Component {
     })
   }
 
+  // search (query) {
+  //   // TODO add search
+  // }
+
+  // exportForPrint (type) {
+  //   // TODO add export function which creates a printable version 
+  //   // either with or without box contents and orders by room
+  // }
+
   render () {
     return (
       <div>
@@ -104,6 +130,7 @@ class App extends Component {
           <div className='input-container'>
             <label htmlFor='number'>Add the box number</label>
             <input type='number' name='number' placeholder='Box #' onChange={this.handleChange} value={this.state.number} />
+            <span class='next-box'>Previous box <strong>{this.state.boxes.length+1}</strong></span>
           </div>
           <div className='input-container'>
             <label htmlFor='location'>Which room should this box go in the new house?</label>
