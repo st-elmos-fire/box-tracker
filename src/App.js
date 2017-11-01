@@ -130,7 +130,7 @@ class App extends Component {
           <div className='input-container'>
             <label htmlFor='number'>Add the box number</label>
             <input type='number' name='number' placeholder='Box #' onChange={this.handleChange} value={this.state.number} />
-            <span class='next-box'>Previous box <strong>{this.state.boxes.length+1}</strong></span>
+            <span class='next-box'>Previous box <strong>{this.state.boxes.length}</strong></span>
           </div>
           <div className='input-container'>
             <label htmlFor='location'>Which room should this box go in the new house?</label>
