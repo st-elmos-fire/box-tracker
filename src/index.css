@@ -155,6 +155,39 @@ h2 {
   margin: 0 0 1rem 0;
 }
 
+/* FIXME: All order-and-filter items are 'it will do for now' styles */
+.order-and-filter {
+  overflow: hidden;
+  margin: 1rem;
+  padding: 1rem;
+  background: #f0f0f0;
+}
+
+@media (min-width: 850px) {
+  .order-and-filter {
+    width: 67%;
+    margin: 0;
+    margin-left: 1.5rem;
+  }
+}
+
+.order-and-filter label {
+  float: left;
+  
+  display: block;
+  margin: 1rem;
+}
+
+.order-and-filter select {
+  float: right;
+  width: 65%;
+  margin-left: 1rem;
+}
+
+.order-and-filter input {
+  margin-left: 1rem;
+}
+
 .box.to-garden-shed {
   border-left: 8px solid rgb(102, 69, 19);
 }
