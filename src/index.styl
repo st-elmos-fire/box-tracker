@@ -1,135 +1,166 @@
+@import "rupture";
+@import "jeet";
+
+// Rupture Scale
+rupture.scale = 0 400px 600px 800px 1050px
+rupture.scale-names = 'xs' 's' 'm' 'l' 'xl'
+
 * {
   box-sizing: border-box;
 }
+
 html {
   font-size: 62.5%;
 }
+
 body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
 }
+
 h1 {
   display: block;
   margin: 2rem;
   font-size: 4rem;
+
+  img {
+    vertical-align: middle;
+    width: 100px;
+    margin-right: 2rem;
+  }
 }
-h1 img {
-  vertical-align: middle;
-  width: 100px;
-  margin-right: 2rem;
-}
+
+
 form {
   padding: 2rem;
   margin: 0 1rem;
-  background: #87ceeb;
+  background: skyblue;
 }
-@media only screen and (min-width: 600px) {
+
++above('m') {
   form {
     position: fixed;
     top: 1rem;
-    right: 0;
+    right:0;
     width: 30%;
   }
 }
+
 label {
   font-weight: bold;
   font-size: 1.5rem;
   display: block;
   margin-bottom: 1rem;
 }
-input,
-textarea,
-select {
+
+input, textarea, select {
   font-size: 1.5rem;
-  padding: 0.5rem;
+  padding: .5rem;
   border: 0;
 }
+
 input[name="number"] {
   width: 100px;
 }
-select,
-textarea {
+
+select, textarea {
   width: 100%;
 }
+
 textarea {
   height: 300px;
 }
+
 .next-box {
   display: inline-block;
   margin-left: 1rem;
 }
+
 button {
-  background: #69c;
-  color: #fff;
+  background: #6699cc;
+  color: white;
   padding: 1rem;
   margin-left: 1rem;
   border: 0;
   border-radius: 0;
   font-size: 1.5rem;
   font-weight: bold;
+  &:hover {
+    background: #41709e
+  }
 }
-button:hover {
-  background: #41709e;
-}
+
 .input-container {
   overflow: hidden;
   padding: 1rem;
+
+  &:first-of-type,
+  &:nth-of-type(2) {
+  float:left;
+  }
+
+  &:nth-of-type(3) {
+    clear: both;
+  }
 }
-.input-container:first-of-type,
-.input-container:nth-of-type(2) {
-  float: left;
-}
-.input-container:nth-of-type(3) {
-  clear: both;
-}
+ 
 ul {
   width: 100%;
-  list-style: none;
+  list-style:none;
   padding: 0 1rem;
 }
+
+
 ul ul {
   display: flex;
   flex-flow: row wrap;
   justify-content: flex-start;
-  padding: 0.5rem;
+  padding: .5rem;
   margin-bottom: 1rem;
   overflow: hidden;
-  border: 1px dotted #d3d3d3;
+  border: 1px dotted lightgrey;
 }
+
 ul ul li {
-  padding: 0.5rem 1rem;
-  margin: 0.2rem;
-  background: #add8e6;
+  padding: .5rem 1rem;
+  margin: .2rem;
+  background: lightblue;
   text-transform: capitalize;
 }
+
 .box {
   position: relative;
   padding: 1rem;
-  border: 1px solid #808080;
+  border: 1px solid grey;
   font-size: 1.4rem;
-  margin: 0.5%;
-}
-.box button {
-  font-size: 1.3rem;
-  margin-left: 0;
-  margin-right: 1rem;
-}
-@media only screen and (min-width: 600px) {
-  .box {
+  margin: .5%
+ 
+  button {
+    font-size: 1.3rem;
+    margin-left: 0;
+    margin-right: 1rem;
+  }
+
+  +above('m') {
     width: 68%;
   }
 }
+
+
+
 .destination {
   position: absolute;
   top: 1rem;
   right: 1rem;
-  padding: 0.5rem;
-  color: #fff;
+  padding: .5rem;
+  color: white;
 }
+
 h2 {
   margin: 0 0 1rem 0;
 }
+
 /* FIXME: All order-and-filter items are 'it will do for now' styles */
 .order-and-filter {
   overflow: hidden;
@@ -137,6 +168,7 @@ h2 {
   padding: 1rem;
   background: #f0f0f0;
 }
+
 @media (min-width: 850px) {
   .order-and-filter {
     width: 67%;
@@ -144,76 +176,98 @@ h2 {
     margin-left: 1.5rem;
   }
 }
+
 .order-and-filter label {
   float: left;
+  
   display: block;
   margin: 1rem;
 }
+
 .order-and-filter select {
   float: right;
   width: 65%;
   margin-left: 1rem;
 }
+
 .order-and-filter input {
   margin-left: 1rem;
 }
+
 .box.to-garden-shed {
-  border-left: 8px solid #664513;
+  border-left: 8px solid rgb(102, 69, 19);
 }
+
 .box.to-garden-shed .destination {
-  background-color: #664513;
+  background-color: rgb(102, 69, 19);
 }
+
 .box.to-kitchen {
-  border-left: 8px solid #e9da01;
+  border-left: 8px solid rgb(233, 218, 1);
 }
+
 .box.to-kitchen .destination {
-  background-color: #e9da01;
+  background-color: rgb(233, 218, 1);
 }
+
 .box.to-dining-room {
-  border-left: 8px solid #270770;
+  border-left: 8px solid rgb(39, 7, 112);
 }
+
 .box.to-dining-room .destination {
-  background-color: #270770;
+  background-color: rgb(39, 7, 112);
 }
+
 .box.to-living-room {
-  border-left: 8px solid #a6d400;
+  border-left: 8px solid rgb(166, 212, 0);
 }
+
 .box.to-living-room .destination {
-  background-color: #a6d400;
+  background-color: rgb(166, 212, 0);
 }
+
 .box.to-box-room {
-  border-left: 8px solid #157435;
+  border-left: 8px solid rgb(21, 116, 53);
 }
+
 .box.to-box-room .destination {
-  background-color: #157435;
+  background-color: rgb(21, 116, 53);
 }
-.box.to-master-bedroom {
-  border-left: 8px solid #f00;
+
+.box.to-master-bedroom{
+  border-left: 8px solid rgb(255, 0, 0);
 }
+
 .box.to-master-bedroom .destination {
-  background-color: #f00;
+  background-color: rgb(255, 0, 0);
 }
-.box.to-guest-room {
-  border-left: 8px solid #e47ef1;
+
+.box.to-guest-room{
+  border-left: 8px solid rgb(228, 126, 241);
 }
+
 .box.to-guest-room .destination {
-  background-color: #e47ef1;
+  background-color: rgb(228, 126, 241);
 }
-.box.to-cols-room {
-  border-left: 8px solid #791b71;
+.box.to-cols-room{
+  border-left: 8px solid rgb(121, 27, 113);
 }
+
 .box.to-cols-room .destination {
-  background-color: #791b71;
+  background-color: rgb(121, 27, 113);
 }
-.box.to-als-room {
-  border-left: 8px solid #008ab4;
+.box.to-als-room{
+  border-left: 8px solid rgb(0, 138, 180);
 }
+
 .box.to-als-room .destination {
-  background-color: #008ab4;
+  background-color: rgb(0, 138, 180);
 }
-.box.to-bathroom {
-  border-left: 8px solid #00ffb3;
+
+.box.to-bathroom{
+  border-left: 8px solid rgb(0, 255, 179);
 }
+
 .box.to-bathroom .destination {
-  background-color: #00ffb3;
+  background-color: rgb(0, 255, 179);
 }
