@@ -1,0 +1,56 @@
+@media print {
+  h1,
+  form,
+  button,
+  .order-and-filter {
+    display: none;
+  }
+
+  @page { 
+    size: 208mm 297mm;
+    margin-left: 15mm;
+    margin-top: 5mm;
+    margin-right: 15mm;
+    margin-bottom: 5mm;
+    padding: 0 !important;
+  } 
+
+  ul {
+    padding: 0;
+    margin: 0;
+  }
+
+  .box {
+    page-break-inside:avoid;
+    text-align: center;
+    display: inline-block;
+    width: 65.5mm;
+    height: 38.1mm;
+    margin: 0;
+    &:nth-child(3n-1) {
+      margin: 0 2.5mm;
+    }
+    &.show-contents {
+      width: 100%;  
+      height: auto;
+      margin: 0;
+    }
+    ul {
+      border: 0;
+    }
+    li {
+      border: 1mm dotted black;
+    }
+    h2 {
+      margin-bottom: 5mm;
+    }
+    .destination {
+      position: static;
+      border: 1mm solid;
+      color: black;
+      font-weight: bold;
+      font-size: 7mm;
+    }
+  }
+}
+

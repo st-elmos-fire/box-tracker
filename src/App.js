@@ -125,11 +125,13 @@ class App extends Component {
         break
     }
 
+    let boxClass = (this.state.showContents) ? 'box show-contents' : 'box'
+
     return [].concat(this.state.boxes)
       .sort(sortingMethod)
       .map((box) => {
         return (
-          <li key={box.id} className={`box to-${box.location.toLowerCase().replace(' ', '-')}`}>
+          <li key={box.id} className={`${boxClass} to-${box.location.toLowerCase().replace(' ', '-')}`}>
             <h2>Box #: {box.number}</h2>
             <span className='destination'>{box.location}</span>
             {(showContents) ? this.showBoxContents(box) : null}
@@ -171,7 +173,7 @@ class App extends Component {
 
   render () {
     return (
-      <div>
+      <div className="app">
         <h1><img src={Logo} alt='Box tracker' />Box tracker</h1>
         <div className='order-and-filter'>
           <label>Sort order
