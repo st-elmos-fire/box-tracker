@@ -21,15 +21,12 @@
   }
 
   .box {
-    page-break-inside:avoid;
+    page-break-inside: avoid;
     text-align: center;
     display: inline-block;
-    width: 65.5mm;
+    width: 59mm;
     height: 38.1mm;
     margin: 0;
-    &:nth-child(3n-1) {
-      margin: 0 2.5mm;
-    }
     &.show-contents {
       width: 100%;  
       height: auto;
@@ -51,6 +48,15 @@
       font-weight: bold;
       font-size: 7mm;
     }
+    &.to-bathroom .destination
+    &.to-master-bedroom .destination
+    &.to-cols-room .destination
+    &.to-als-room .destination
+    &.to-bathroom .destination
+    &.to-box-room .destination
+    &.to-dining-room .destination {
+        color: white;
+      }
   }
 }
 
