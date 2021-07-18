@@ -171,7 +171,9 @@ class App extends Component {
   //   // either with or without box contents and orders by room
   // }
 
+  
   render () {
+    const rooms = ['Main Bedroom', 'Kids Bedroom', 'Guest Bedroom', 'Box Room', 'Office', 'Living Room', 'Kitchen']
     return (
       <div className="app">
         <h1><img src={Logo} alt='Box tracker' />Box tracker</h1>
@@ -204,6 +206,7 @@ class App extends Component {
               Add the box number
             </label>
             <input
+              required
               type='number'
               name='number'
               placeholder='Box #'
@@ -215,40 +218,14 @@ class App extends Component {
             <label htmlFor='location'>
               Which room should this box go in the new house?
             </label>
-            <select name='location' value={this.state.location} onChange={this.handleChange}>
-              <option>
-                Select room
-              </option>
-              <option value='Kitchen'>
-                Kitchen
-              </option>
-              <option value='Dining Room'>
-                Dining Room
-              </option>
-              <option value='Box Room'>
-                Box Room
-              </option>
-              <option value='Living Room'>
-                Living Room
-              </option>
-              <option value='Bathroom'>
-                Bathroom
-              </option>
-              <option value='Master Bedroom'>
-                Master Bedroom
-              </option>
-              <option value='Guest Room'>
-                Guest Room
-              </option>
-              <option value='Cols Room'>
-                Cols Room
-              </option>
-              <option value='Als Room'>
-                Als Room
-              </option>
-              <option value='Garden Shed'>
-                Garden Shed
-              </option>
+            <select required name='location' value={this.state.location} onChange={this.handleChange}>
+              {rooms.map((room) => {
+                return (
+                  <option key={room} value={room}>
+                    {room}
+                  </option>
+                )
+              })}
             </select>
           </div>
           <div className='input-container'>
@@ -257,6 +234,7 @@ class App extends Component {
             </label>
             <textarea
               name='contents'
+              required
               placeholder='What does the box contain?'
               onChange={this.handleChange}
               value={this.state.contents} />
