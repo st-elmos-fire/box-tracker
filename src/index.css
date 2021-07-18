@@ -121,23 +121,11 @@ ul ul li {
     width: 68%;
   }
 }
-.box.to-garden-shed {
-  border-color: #664513;
-}
-.box.to-garden-shed .destination {
-  background-color: #664513;
-}
 .box.to-kitchen {
   border-color: #e9da01;
 }
 .box.to-kitchen .destination {
   background-color: #e9da01;
-}
-.box.to-dining-room {
-  border-color: #270770;
-}
-.box.to-dining-room .destination {
-  background-color: #270770;
 }
 .box.to-living-room {
   border-color: #a6d400;
@@ -147,36 +135,41 @@ ul ul li {
 }
 .box.to-box-room {
   border-color: #157435;
+  color: #fff;
 }
 .box.to-box-room .destination {
   background-color: #157435;
 }
-.box.to-master-bedroom {
+.box.to-main-bedroom {
   border-color: #f00;
+  color: #fff;
 }
-.box.to-master-bedroom .destination {
+.box.to-main-bedroom .destination {
   background-color: #f00;
 }
-.box.to-guest-room {
+.box.to-guest-bedroom {
   border-color: #e47ef1;
 }
-.box.to-guest-room .destination {
+.box.to-guest-bedroom .destination {
   background-color: #e47ef1;
 }
-.box.to-cols-room {
+.box.to-kids-bedroom {
   border-color: #791b71;
+  color: #fff;
 }
-.box.to-cols-room .destination {
+.box.to-kids-bedroom .destination {
   background-color: #791b71;
 }
-.box.to-als-room {
+.box.to-office {
   border-color: #008ab4;
+  color: #fff;
 }
-.box.to-als-room .destination {
+.box.to-office .destination {
   background-color: #008ab4;
 }
 .box.to-bathroom {
   border-color: #00ffb3;
+  color: #fff;
 }
 .box.to-bathroom .destination {
   background-color: #00ffb3;

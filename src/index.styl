@@ -1,12 +1,12 @@
 // Imports
-@import "rupture";
-@import "jeet";
+@import "../node_modules/rupture/rupture/index.styl";
+@import "../node_modules/jeet/jeet.styl";
 
 // Rupture Scale
 rupture.scale = 0 400px 600px 800px 1050px
 rupture.scale-names = 'xs' 's' 'm' 'l' 'xl'
 
-// Mixins
+// Mixins 
 boxColor(color) {
   border-color: color;
   .destination {
@@ -154,19 +154,11 @@ ul {
   }
 
   +above('m') {
-    width: 68%;
-  }
-  &.to-garden-shed {
-    boxColor(rgb(102, 69, 19))
+    width: 68%; 
   }
 
   &.to-kitchen {
     boxColor(rgb(233, 218, 1))
-  }
-
-  &.to-dining-room {
-    boxColor(rgb(39, 7, 112))
-    color: white;
   }
 
   &.to-living-room {
@@ -178,21 +170,21 @@ ul {
     color: white;
   }
 
-  &.to-master-bedroom{
+  &.to-main-bedroom{
     boxColor(rgb(255, 0, 0))
     color: white;
   }
 
-  &.to-guest-room{
+  &.to-guest-bedroom{
     boxColor(rgb(228, 126, 241))
   }
 
-  &.to-cols-room{
+  &.to-kids-bedroom{
     boxColor(rgb(121, 27, 113))
     color: white;
   }
 
-  &.to-als-room{
+  &.to-office{
     boxColor(rgb(0, 138, 180))
     color: white;
   }
