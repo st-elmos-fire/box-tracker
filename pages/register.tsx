@@ -1,22 +1,21 @@
-import type { NextPage } from 'next'
-import Head from 'next/head'
-import Image from 'next/image'
-import styles from '../styles/Home.module.scss'
-import { useInput } from '../lib/hooks'
-import { useAuth } from '../lib/context/auth-context'
+import type { NextPage } from 'next';
+import Head from 'next/head';
+import Image from 'next/image';
+import styles from '../styles/Home.module.scss';
+import { useInput } from '../lib/hooks';
+import { useAuth } from '../lib/context/auth-context';
 
 const Login: NextPage = () => {
-
   const { user, register } = useAuth();
 
   const email = useInput('');
   const password = useInput('');
   const name = useInput('');
-  
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     register(email.value, password.value);
-  }
+  };
 
   return (
     <div className={styles.container}>
@@ -27,9 +26,7 @@ const Login: NextPage = () => {
       </Head>
 
       <main className={styles.main}>
-        <h1 className={styles.title}>
-         Register
-        </h1>
+        <h1 className={styles.title}>Register</h1>
         <form onSubmit={handleSubmit}>
           <label>
             Email:
@@ -44,9 +41,7 @@ const Login: NextPage = () => {
             <input type="text" name="name" {...name} />
           </label>
           <button type="submit">Sign me up!</button>
-
         </form>
-       
       </main>
 
       <footer className={styles.footer}>
@@ -62,7 +57,7 @@ const Login: NextPage = () => {
         </a>
       </footer>
     </div>
-  )
-}
+  );
+};
 
-export default Login
+export default Login;

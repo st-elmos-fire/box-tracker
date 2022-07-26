@@ -1,19 +1,17 @@
-import type { NextPage } from 'next'
-import { useAuth } from '../lib/context/auth-context'
-import Router from 'next/router'
-import { useEffect } from 'react'
+import type { NextPage } from 'next';
+import { useAuth } from '../lib/context/auth-context';
+import Router from 'next/router';
+import { useEffect } from 'react';
 
 const Logout: NextPage = () => {
+  const { logout } = useAuth();
 
-    const { logout } = useAuth();
+  useEffect(() => {
+    logout();
+    Router.push('/');
+  }, [logout]);
 
-    useEffect(() => {
-        logout();
-        Router.push('/');
-    }, [logout]);
+  return null;
+};
 
-    return null;
-        
-}
-
-export default Logout
+export default Logout;

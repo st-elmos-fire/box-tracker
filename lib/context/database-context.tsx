@@ -1,5 +1,5 @@
 import { useContext, createContext, useState, useEffect } from 'react';
-import { getDatabase, ref, onValue } from "firebase/database";
+import { getDatabase, ref, onValue } from 'firebase/database';
 
 import getFirebase from '../services/firebase';
 
@@ -8,24 +8,26 @@ const firebase = getFirebase();
 const DatabaseContext = createContext<any>(null);
 
 const DatabaseProvider: React.FC = ({ children }) => {
+  const nothing = 'nothing';
 
-    const nothing = 'nothing';
+  const contextValue = {
+    nothing
+  };
 
-    const contextValue = {
-        nothing
-    }
-
-    return <DatabaseContext.Provider value={contextValue}>{children}</DatabaseContext.Provider>
-
-}
+  return (
+    <DatabaseContext.Provider value={contextValue}>
+      {children}
+    </DatabaseContext.Provider>
+  );
+};
 
 const useDatabase = () => {
-    const db = useContext(DatabaseContext);
-    if (!db) {
-        throw new Error('Database is not initialized');
-    }
-    return db;
-}
+  const db = useContext(DatabaseContext);
+  if (!db) {
+    throw new Error('Database is not initialized');
+  }
+  return db;
+};
 
 export { DatabaseProvider, useDatabase };
 
