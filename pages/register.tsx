@@ -7,14 +7,15 @@ import { useAuth } from '../lib/context/auth-context'
 
 const Login: NextPage = () => {
 
-  const { user, login } = useAuth();
+  const { user, register } = useAuth();
 
   const email = useInput('');
   const password = useInput('');
-
+  const name = useInput('');
+  
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    login(email.value, password.value);
+    register(email.value, password.value);
   }
 
   return (
@@ -27,7 +28,7 @@ const Login: NextPage = () => {
 
       <main className={styles.main}>
         <h1 className={styles.title}>
-         Login
+         Register
         </h1>
         <form onSubmit={handleSubmit}>
           <label>
@@ -38,7 +39,11 @@ const Login: NextPage = () => {
             Password:
             <input type="password" name="password" {...password} />
           </label>
-          <button type="submit">Login already!</button>
+          <label>
+            Name:
+            <input type="text" name="name" {...name} />
+          </label>
+          <button type="submit">Sign me up!</button>
 
         </form>
        
