@@ -1,9 +1,11 @@
 import { useState } from 'react';
 
-const useInput = (initialValue: any) => {
+type Input = string | number | readonly string[] | undefined;
+
+const useInput = (initialValue: Input) => {
   const [value, setValue] = useState(initialValue);
 
-  const handleChange = (event: any) => {
+  const handleChange = (event: { target: { value: Input } }) => {
     setValue(event.target.value);
   };
 

@@ -1,13 +1,11 @@
-import { useContext, createContext, useState, useEffect } from 'react';
+import React, { useContext, createContext, useState, useEffect } from 'react';
 import { getDatabase, ref, onValue } from 'firebase/database';
 
-import getFirebase from '../services/firebase';
+import FcProps from '@typedefs/fc-props';
 
-const firebase = getFirebase();
+const DatabaseContext = createContext<unknown>(null);
 
-const DatabaseContext = createContext<any>(null);
-
-const DatabaseProvider: React.FC = ({ children }) => {
+const DatabaseProvider: React.FC<FcProps> = ({ children }) => {
   const nothing = 'nothing';
 
   const contextValue = {

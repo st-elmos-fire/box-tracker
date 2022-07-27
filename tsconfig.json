@@ -1,20 +1,94 @@
 {
   "compilerOptions": {
-    "target": "es5",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "target": "es2017",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
     "forceConsistentCasingInFileNames": true,
     "noEmit": true,
+    "noUnusedLocals": true,
+    "noImplicitReturns": true,
     "esModuleInterop": true,
     "module": "esnext",
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
+    "baseUrl": ".",
+    "paths": {
+      "@templates/*": [
+        "templates/*"
+      ],
+      "@pages/*": [
+        "pages/*"
+      ],
+      "@styles/*": [
+        "styles/*"
+      ],
+      "@mocks/*": [
+        "lib/mocks/*"
+      ],
+      "@typedefs/*": [
+        "lib/types/*"
+      ],
+      "@components/*": [
+        "components/*"
+      ],
+      "@partials/*": [
+        "partials/*"
+      ],
+      "@data/*": [
+        "lib/data/*"
+      ],
+      "@hooks/*": [
+        "lib/hooks/*"
+      ],
+      "@context/*": [
+        "lib/context/*"
+      ],
+      "@helpers/*": [
+        "lib/helpers/*"
+      ],
+      "@services/*": [
+        "lib/services/*"
+      ],
+      "@pages": [
+        "pages/index.tsx"
+      ],
+      "@components": [
+        "components/index.ts"
+      ],
+      "@partials": [
+        "partials/index.ts"
+      ],
+      "@helpers": [
+        "lib/helpers/index.ts"
+      ],
+      "@hooks": [
+        "lib/hooks/index.ts"
+      ],
+      "@data": [
+        "lib/data/index.ts"
+      ],
+      "@styles": [
+        "styles/index.scss"
+      ]
+    },
     "incremental": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
-  "exclude": ["node_modules"]
+  "include": [
+    "markdown.d.ts",
+    "scss.d.ts",
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "config/setup.ts"  ],
+  "exclude": [
+    "node_modules"
+  ]
 }

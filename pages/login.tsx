@@ -1,3 +1,4 @@
+import React from 'react';
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import Image from 'next/image';
@@ -6,14 +7,14 @@ import { useInput } from '../lib/hooks';
 import { useAuth } from '../lib/context/auth-context';
 
 const Login: NextPage = () => {
-  const { user, login } = useAuth();
+  const auth = useAuth();
 
   const email = useInput('');
   const password = useInput('');
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    login(email.value, password.value);
+    auth?.login(email.value as string, password.value as string);
   };
 
   return (

@@ -6,7 +6,8 @@ module.exports = {
     'eslint:recommended',
     'plugin:jest-dom/recommended',
     'plugin:prettier/recommended',
-    'plugin:storybook/recommended'
+    'plugin:storybook/recommended',
+    'plugin:@next/next/recommended'
   ],
   parserOptions: {
     ecmaVersion: 2020,

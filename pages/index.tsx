@@ -1,33 +1,28 @@
+import React, { useEffect, useState } from 'react';
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import Image from 'next/image';
 import styles from '../styles/Home.module.scss';
 import { useAuth } from '../lib/context/auth-context';
-import { useDatabase } from '../lib/context/database-context';
-import getFirebase from '../lib/services/firebase';
 import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
 import { User } from '../lib/types/user';
-
-const firebase = getFirebase();
 
 const Home: NextPage = () => {
   const router = useRouter();
   const [currentUser, setCurrentUser] = useState<User>();
 
-  const { getUser } = useAuth();
-  const { nothing } = useDatabase();
+  const auth = useAuth();
 
   useEffect(() => {
     // Check if a user is logged in
     // If not, redirect to /login
-    const user = getUser();
+    const user = auth?.getUser();
     if (!user?.email) {
       router.push('/login');
     } else {
       setCurrentUser(user);
     }
-  }, [getUser, router]);
+  }, [auth?.getUser, router]);
 
   if (currentUser) {
     return (
@@ -62,7 +57,7 @@ const Home: NextPage = () => {
       </div>
     );
   }
-  return 'Loading...';
+  return <div>Loading...</div>;
 };
 
 export default Home;

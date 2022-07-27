@@ -1,22 +1,32 @@
+import React from 'react';
 import {
   createUserWithEmailAndPassword,
   getAuth,
   signInWithEmailAndPassword
 } from 'firebase/auth';
 import { createContext, useContext } from 'react';
-import getFirebase from '../services/firebase';
-import { useRouter } from 'next/router';
 import { getDatabase, ref, onValue } from 'firebase/database';
+import { useRouter } from 'next/router';
+
+import getFirebase from '@services/firebase';
+import { User } from '@typedefs/user';
+import FcProps from '@typedefs/fc-props';
 
 const firebase = getFirebase();
 
-const AuthContext = createContext<any>(null);
+type AuthContextType = {
+  login: (email: string, password: string) => Promise<void>;
+  logout: () => Promise<void>;
+  register: (email: string, password: string) => Promise<void>;
+  getUser: () => User;
+};
 
-const AuthProvider: React.FC = ({ children }) => {
+const AuthContext = createContext<AuthContextType | undefined>(undefined);
+
+const AuthProvider: React.FC<FcProps> = ({ children }) => {
   const router = useRouter();
 
   const getDBDetails = (uid: string) => {
-    let userData = {};
     if (firebase) {
       const db = getDatabase(firebase);
       try {
@@ -68,7 +78,7 @@ const AuthProvider: React.FC = ({ children }) => {
     }
   };
 
-  const register = async (email: string, password: string, name: string) => {
+  const register = async (email: string, password: string) => {
     if (firebase) {
       try {
         const auth = getAuth();
@@ -96,7 +106,7 @@ const AuthProvider: React.FC = ({ children }) => {
     logout,
     register,
     getUser
-  };
+  } as AuthContextType;
 
   return (
     <AuthContext.Provider value={contextValue}>{children}</AuthContext.Provider>

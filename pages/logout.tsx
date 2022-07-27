@@ -1,15 +1,15 @@
+import { useEffect } from 'react';
 import type { NextPage } from 'next';
 import { useAuth } from '../lib/context/auth-context';
 import Router from 'next/router';
-import { useEffect } from 'react';
 
 const Logout: NextPage = () => {
-  const { logout } = useAuth();
+  const auth = useAuth();
 
   useEffect(() => {
-    logout();
+    auth?.logout();
     Router.push('/');
-  }, [logout]);
+  }, [auth?.logout]);
 
   return null;
 };
