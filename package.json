@@ -116,5 +116,10 @@
       "prettier --write",
       "yarn lint:md"
     ]
+  },
+  "resolutions": {
+    "glob-parent": "^5.1.2",
+    "trim": "^0.0.3",
+    "trim-newlines": "^3.0.1"
   }
 }
