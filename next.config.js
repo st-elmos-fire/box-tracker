@@ -28,23 +28,24 @@ module.exports = {
       `
   },
   async headers() {
+    const baseString = ["'self'", "data:", "blob:", "wss:", "firebasedatabase.app", "*.firebasedatabase.app"]
     // Default content security policy
     const cspString = isDev
-      ? ["'self'", "'unsafe-inline'", "'unsafe-eval'"]
-      : ["'self'"]
+      ? [...baseString, "'unsafe-inline'", "'unsafe-eval'"]
+      : baseString
     // Add additional content security policy directives
-    const connectSrc = [...cspString, process.env.NEXT_PUBLIC_FIREBASE_DATABASE_URL, process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN]
+    const connectSrc = [...cspString, process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN, 'identitytoolkit.googleapis.com']
 
 
     const directives = {
       'default-src': cspString,
       'script-src': cspString,
       'style-src': cspString,
-      'img-src': [...cspString, 'blob:', process.env.NEXT_PUBLIC_FIREBASE_DATABASE_URL],
+      'img-src': cspString,
       'font-src': cspString,
       'connect-src': connectSrc,
-      'frame-src': ["'self'"],
-      'media-src': ["'self'"]
+      'frame-src': cspString,
+      'media-src': cspString
     }
 
     return [{

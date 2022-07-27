@@ -4,6 +4,7 @@ import Head from 'next/head';
 import Image from 'next/image';
 import { useInput } from '../lib/hooks';
 import { useAuth } from '../lib/context/auth-context';
+import { useRouter } from 'next/router';
 
 import styles from './home.module.scss';
 
@@ -13,9 +14,12 @@ const Login: NextPage = () => {
   const email = useInput('');
   const password = useInput('');
 
+  const router = useRouter();
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     auth?.login(email.value as string, password.value as string);
+    router.push('/');
   };
 
   return (
