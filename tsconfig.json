@@ -19,66 +19,7 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
-    "baseUrl": ".",
-    "paths": {
-      "@templates/*": [
-        "templates/*"
-      ],
-      "@pages/*": [
-        "pages/*"
-      ],
-      "@styles/*": [
-        "styles/*"
-      ],
-      "@mocks/*": [
-        "lib/mocks/*"
-      ],
-      "@typedefs/*": [
-        "lib/types/*"
-      ],
-      "@components/*": [
-        "components/*"
-      ],
-      "@partials/*": [
-        "partials/*"
-      ],
-      "@data/*": [
-        "lib/data/*"
-      ],
-      "@hooks/*": [
-        "lib/hooks/*"
-      ],
-      "@context/*": [
-        "lib/context/*"
-      ],
-      "@helpers/*": [
-        "lib/helpers/*"
-      ],
-      "@services/*": [
-        "lib/services/*"
-      ],
-      "@pages": [
-        "pages/index.tsx"
-      ],
-      "@components": [
-        "components/index.ts"
-      ],
-      "@partials": [
-        "partials/index.ts"
-      ],
-      "@helpers": [
-        "lib/helpers/index.ts"
-      ],
-      "@hooks": [
-        "lib/hooks/index.ts"
-      ],
-      "@data": [
-        "lib/data/index.ts"
-      ],
-      "@styles": [
-        "styles/index.scss"
-      ]
-    },
+    "baseUrl": "./",
     "incremental": true
   },
   "include": [

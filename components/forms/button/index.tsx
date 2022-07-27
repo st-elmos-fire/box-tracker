@@ -1,0 +1,162 @@
+import React from 'react';
+import classNames from 'classnames';
+
+import { MdAutorenew, MdDelete, MdAdd, MdEdit, MdClose } from 'react-icons/md';
+
+/* Define available presets here */
+
+type PresetIcon = 'refresh' | 'delete' | 'add' | 'edit' | 'close';
+
+/* Import Types */
+export interface Props extends React.ComponentProps<'button'> {
+  /**
+   * The button label
+   */
+  label: string;
+  /**
+   * The if you want to include an icon, this specifies the side of the button the icon should appear on.
+   */
+  alignIcon?: 'left' | 'right' | 'center';
+  /**
+   * If the icon should be on it's own with no visible text, set this property to `true`.
+   * Note: The label prop must still be provided for accessibility purposes.
+   **/
+  iconOnly?: boolean;
+  /**
+   * The id to appy to the button for unique identification in tests.
+   */
+  testID?: string;
+  /**
+   * Is this a submit button?
+   */
+  submit?: boolean;
+  /**
+   * Is this a reset button?
+   */
+  reset?: boolean;
+  /**
+   * Optional button type.
+   */
+  variant?:
+    | 'primary'
+    | 'create'
+    | 'destroy'
+    | 'text'
+    | 'text-create'
+    | 'text-destroy';
+  /**
+   * Use a button preset.
+   */
+  preset?: PresetIcon;
+  /**
+   * Is the button rectangular or circular?
+   * @default false (rectangular)
+   */
+  circular?: boolean;
+  /**
+   * Shows a loading indicator instead of text.
+   */
+  loading?: boolean;
+  /**
+   * The loading indicator to be read out for accessability.
+   * @default "Loading"
+   */
+  loadingIndicator?: string;
+}
+
+/* Import Stylesheet */
+import styles from './styles.module.scss';
+
+const cx = classNames.bind(styles);
+
+const presetIcon = (preset: PresetIcon) => {
+  switch (preset) {
+    case 'refresh':
+      return <MdAutorenew />;
+    case 'delete':
+      return <MdDelete />;
+    case 'add':
+      return <MdAdd />;
+    case 'edit':
+      return <MdEdit />;
+    case 'close':
+      return <MdClose />;
+    default:
+      return null;
+  }
+};
+
+/* Render component */
+export const Button: React.FC<Props> = ({
+  label = '',
+  alignIcon,
+  iconOnly,
+  testID,
+  submit,
+  reset,
+  preset,
+  loading,
+  loadingIndicator,
+  children,
+  className,
+  disabled,
+  variant = 'primary',
+  circular = false,
+  ...props
+}: Props) => {
+  const buttonType = (): 'button' | 'submit' | 'reset' | undefined => {
+    if (submit) {
+      return 'submit';
+    }
+    if (reset) {
+      return 'reset';
+    }
+    return 'button';
+  };
+  return (
+    <button
+      data-testid={
+        testID || `test-button-${label.toLowerCase().split(' ').join('-')}`
+      }
+      aria-label={label}
+      type={buttonType()}
+      className={cx(
+        styles['button'],
+        alignIcon && styles[`icon-${alignIcon}`],
+        iconOnly && styles[`icon-only`],
+        {
+          [styles[`button-${variant}` || '']]: variant,
+          [styles['loading']]: loading
+        },
+        circular && styles['circular'],
+        className
+      )}
+      tabIndex={disabled ? -1 : 0}
+      disabled={disabled || loading}
+      {...props}
+    >
+      {!loading && (
+        <>
+          {preset && presetIcon(preset)}
+          {children}
+          {!iconOnly && label}
+        </>
+      )}
+      {loading && (
+        <>
+          <MdAutorenew />
+          <span>{loadingIndicator}...</span>
+        </>
+      )}
+    </button>
+  );
+};
+
+Button.defaultProps = {
+  variant: 'primary',
+  loadingIndicator: 'Loading'
+};
+
+Button.displayName = 'Button';
+
+export default Button;

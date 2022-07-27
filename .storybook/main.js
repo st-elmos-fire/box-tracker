@@ -1,20 +1,19 @@
 const path = require('path');
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 
-const pathsPlugin = new TsconfigPathsPlugin({
-  configFile: path.resolve(__dirname, '../tsconfig.json')
-});
-
 module.exports = {
   core: {
-    builder: 'webpack5'
+    builder: 'webpack5',
+    options: {
+      fsCache: true
+    }
   },
   framework: '@storybook/react',
   features: {
     storyStoreV7: !global.navigator?.userAgent?.match?.('jsdom'),
     interactionsDebugger: true
   },
-  stories: ['../components/**/*.stories.mdx', '../partials/**/*.stories.mdx'],
+  stories: ['../components/**/*.stories.mdx'],
   addons: ['@storybook/addon-essentials'],
   staticDirs: [
     { from: '../public', to: '/public' },
@@ -24,11 +23,12 @@ module.exports = {
     postcss: false
   },
   webpackFinal: async (config) => {
-    if (config.resolve.plugins) {
-      config.resolve.plugins.push(pathsPlugin);
-    } else {
-      config.resolve.plugins = [pathsPlugin];
-    }
+    config.resolve.plugins = [
+      ...(config.resolve.plugins || []),
+      new TsconfigPathsPlugin({
+        extensions: config.resolve.extensions
+      })
+    ];
     config.module.rules.push(
       {
         test: /\.md$/,
@@ -59,8 +59,7 @@ module.exports = {
             options: {
               importLoaders: 1,
               modules: {
-                localIdentName: 'c-[hash:base64:5]__[folder]--[local]',
-                namedExport: false
+                localIdentName: 'c-[hash:base64:5]__[folder]--[local]'
               }
             }
           },
@@ -71,10 +70,10 @@ module.exports = {
               implementation: require('sass'),
               sourceMap: false,
               additionalData: `
-                @use '/styles/vars' as *;
-                @use '/styles/breakpoints' as *;
-                @use '/styles/utilities' as utils;
-                @use '/styles/animations' as animations;
+                @use 'styles/vars' as *;
+                @use 'styles/breakpoints' as *;
+                @use 'styles/utilities' as utils;
+                @use 'styles/animations' as animations;
               `,
               sassOptions: {
                 outputStyle:

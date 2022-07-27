@@ -1,0 +1,49 @@
+.authentication {
+  padding: 4rem 0;
+  width: 90vw;
+
+  @include mq($bp-small) {
+    aspect-ratio: 1/1;
+  }
+
+  @include mq($bp-medium) {
+    width: 500px;
+  }
+}
+
+.header {
+  text-align: center;
+}
+
+.body {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr;
+  justify-self: center;
+  width: 70%;
+}
+
+.title {
+  font-size: $fs-input-label;
+  margin-bottom: spacing(6);
+  margin-top: spacing(1);
+}
+
+.form {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto auto auto;
+  justify-items: center;
+  row-gap: spacing(2);
+  width: 100%;
+}
+
+.welcome-back-message {
+  font-weight: bold;
+  text-align: center;
+}
+
+.error-message {
+  color: $col-danger;
+  margin-top: spacing(2);
+}

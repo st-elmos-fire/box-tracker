@@ -1,0 +1,116 @@
+import { useState, useEffect } from 'react';
+import Authentication from './index';
+
+<Meta
+  title="Users/Authentication"
+  component={Authentication}
+  args={{
+    logoUrl: 'https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50?s=200',
+  }}
+/>
+
+# Authentication
+
+The authentication component is used to display the authentication form.
+
+<Tip type="danger">
+  It does not process any authentication logic itself. It only displays the
+  form.
+</Tip>
+
+<Canvas withSource="open">
+  <Story name="Default">{(args) => <Authentication {...args} />}</Story>
+</Canvas>
+
+The password can be shown or hidden by toggling the `showPassword` prop.
+
+<Canvas withSource="open">
+  <Story name="Password hidden">
+    {(args) => <Authentication {...args} showPassword={false} />}
+  </Story>
+</Canvas>
+
+The 'continue' button is disabled until the `disableLogin` prop is set to `false`.
+
+<Canvas withSource="open">
+  <Story name="Login button enabled">
+    {(args) => (
+      <Authentication
+        {...args}
+        disableLogin={false}
+        onSubmit={(e) => {
+          e.preventDefault();
+        }}
+      />
+    )}
+  </Story>
+</Canvas>
+
+An additional text button can be added to the form. Here is an example of it being used as a 'resend code' button.
+
+<Canvas withSource="open">
+  <Story name="Extra text button enabled">
+    {(args) => (
+      <Authentication
+        {...args}
+        disableLogin={false}
+        showPassword={false}
+        buttonLabel={'Continue with code'}
+        textButton={{
+          label: 'Resend code',
+          onClick: () => alert('code resent')
+        }}
+        onSubmit={(e) => {
+          e.preventDefault();
+        }}
+      />
+    )}
+  </Story>
+</Canvas>
+
+## Example login logic
+
+Here is an example of a login form. It detects if the user is using a 'google.com' email address and if so it hides the password field.
+
+Any other email address will return the email and password on login.
+
+<Canvas withSource="open">
+  <Story name="Google SSO example">
+    {() => {
+      const [formValues, setFormValues] = useState({
+        email: '',
+        password: ''
+      });
+      const [disableLogin, setDisableLogin] = useState(true);
+      const [showPassword, setShowPassword] = useState(true);
+      useEffect(() => {
+        if (formValues.email.includes('@google.com')) {
+          setShowPassword(false);
+          setDisableLogin(false);
+        } else {
+          setShowPassword(true);
+        }
+        if (formValues.email.length > 0 && formValues.password.length > 0) {
+          setDisableLogin(false);
+        }
+      }, [formValues]);
+      const handleLogin = (e) => {
+        e.preventDefault();
+        console.log('Logged in with', formValues);
+        alert(`${formValues.email} is now logged in! See console for details.`);
+      };
+      return (
+        <Authentication
+          showPassword={showPassword}
+          disableLogin={disableLogin}
+          onFormUpdated={setFormValues}
+          onSubmit={handleLogin}
+        />
+      );
+    }}
+  </Story>
+</Canvas>
+
+## Props
+
+<ArgsTable of={Authentication} />

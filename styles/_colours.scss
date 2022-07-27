@@ -1,0 +1,92 @@
+/* Backgrounds */
+$col-background: #fff;
+$col-main-panel-bg: #f7f7f7;
+$col-tool-header-bg: #f0f0f0;
+
+/* Brand Colours */
+$col-primary: #1f6fcb;
+$col-secondary: #8904dc;
+
+/* Dark and light base colours */
+$col-dark: #121212;
+$col-light: #fff;
+
+/* Grey shades */
+$col-grey-100: #fafafa;
+$col-grey-200: #f5f5f5;
+$col-grey-300: #f0f0f0;
+$col-grey-400: #ddd;
+$col-grey-500: #ccc;
+$col-grey-600: #666;
+$col-grey-700: #333;
+$col-grey-800: #222;
+$col-grey-900: #111;
+
+/* Typography */
+$col-body-text: #0c0d0d;
+$col-body-text-light: #4f595f;
+
+/* Statuses */
+$col-warning: #ffc105;
+$col-success: #00703c;
+$col-danger: #d4341c;
+$col-info: #008db8;
+$col-error: $col-danger;
+
+/* Inputs */
+$col-input-bg: $col-background;
+$col-input-focus-bg: lighten($col-warning, 47%);
+$col-input-border: $col-grey-500;
+$col-input-border-focus: $col-warning;
+$col-label-text: #7b6f6f;
+$col-input-text: $col-body-text;
+$col-disabled-input-text: $col-label-text;
+
+/* Links */
+/* Style also applies to text buttons */
+$col-link: #0009a9;
+$col-link-hover: lighten($col-link, 20%);
+$col-link-hover-bg: #d0eefc;
+$col-link-focus-bg: $col-link-hover;
+$col-link-disabled: #7b6f6f;
+
+/* Actions */
+$col-action: $col-primary;
+$col-action-destroy: $col-danger;
+$col-action-create: $col-success;
+$col-action-disabled: #999;
+
+$col-action-hover: lighten($col-primary, 10%);
+$col-action-destroy-hover: lighten($col-secondary, 10%);
+$col-action-create-hover: lighten($col-action-create, 10%);
+
+$col-action-focus-bg: lighten($col-primary, 20%);
+$col-action-destroy-focus-bg: lighten($col-secondary, 20%);
+$col-action-create-focus-bg: lighten($col-action-create, 20%);
+
+$col-action-text: #fff;
+
+/* Shadows and borders */
+
+$col-shadow: #000;
+$col-border: #e0dedd;
+$col-border-dark: #707070;
+
+/* Chips */
+
+$col-chip-bg: $col-background;
+$col-chip-category-bg: #ead8d0;
+
+/* Tables */
+
+$col-table-bg: $col-background;
+$col-table-header-bg: $col-primary;
+$col-table-header-text: $col-light;
+$col-table-stripe-bg: #f0f0f0;
+
+$col-statuses: (
+  error: $col-error,
+  success: $col-success,
+  warning: $col-warning,
+  info: $col-info
+);

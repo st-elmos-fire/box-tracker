@@ -1,0 +1,128 @@
+@use '../vars' as *;
+@use './link.scss' as *;
+
+@mixin disabled-button() {
+  background-color: $col-action-disabled;
+  box-shadow: none;
+  cursor: default;
+  pointer-events: none;
+}
+
+@mixin button() {
+  @include fs-button();
+
+  background-color: $col-background;
+  border-radius: $border-radius;
+  box-sizing: border-box;
+  cursor: pointer;
+  display: inline-block;
+  width: max-content;
+  outline: 0;
+  padding: padding(1) padding(2) padding(0.8) padding(2);
+  position: relative;
+  text-align: center;
+  text-transform: uppercase;
+  transition: all 0.25s cubic-bezier(0.165, 0.84, 0.44, 1);
+
+  &:disabled {
+    @include disabled-button();
+  }
+}
+
+@mixin button-primary {
+  @include button();
+
+  background-color: $col-action;
+  color: $col-action-text;
+
+  &:not([disabled]) {
+    &:hover {
+      background-color: $col-action-hover;
+    }
+
+    &:active,
+    &:focus {
+      background-color: $col-action-focus-bg;
+    }
+  }
+}
+
+@mixin button-create {
+  @include button();
+
+  background-color: $col-action-create;
+  color: $col-action-text;
+
+  &:not([disabled]) {
+    &:hover {
+      background-color: $col-action-create-hover;
+    }
+
+    &:active,
+    &:focus {
+      background-color: $col-action-create-focus-bg;
+    }
+  }
+}
+
+@mixin button-destroy {
+  @include button();
+
+  background-color: $col-action-destroy;
+  color: $col-action-text;
+
+  &:disabled {
+    @include disabled-button();
+  }
+
+  &:not([disabled]) {
+    &:hover {
+      background-color: $col-action-destroy-hover;
+    }
+
+    &:active,
+    &:focus {
+      background-color: $col-action-destroy-focus-bg;
+    }
+  }
+}
+
+@mixin button-circular {
+  // No need to include button() here, since it's it's an extra layer of
+  // styline on one of the
+  aspect-ratio: 1;
+  border-radius: 50%;
+}
+
+@mixin button-text {
+  @include link();
+
+  &:active,
+  &:hover {
+    color: $col-action-hover;
+    background-color: transparent;
+  }
+
+  &:focus {
+    background: transparent;
+    color: $col-action-focus-bg;
+    box-shadow: inset 0 0 1px $col-action-focus-bg;
+  }
+  background-color: transparent;
+}
+
+@mixin button-text-create {
+  @include button-text();
+  color: darken($col-action-create, 10%);
+  &:focus {
+    box-shadow: inset 0 0 1px $col-action-create-focus-bg;
+  }
+}
+
+@mixin button-text-destroy {
+  @include button-text();
+  color: $col-action-destroy;
+  &:focus {
+    box-shadow: inset 0 0 1px $col-action-destroy-focus-bg;
+  }
+}

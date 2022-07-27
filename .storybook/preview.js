@@ -9,7 +9,7 @@ import pretty from 'pretty';
 
 import addons from '@storybook/addons';
 
-import '../styles/index.scss';
+import 'styles/index.scss';
 
 // get an instance to the communication channel for the manager and preview
 const channel = addons.getChannel();
@@ -74,8 +74,6 @@ const viewports = {
     }
   }
 };
-
-export const decorators = [withPerformance];
 
 export const parameters = {
   docs: {

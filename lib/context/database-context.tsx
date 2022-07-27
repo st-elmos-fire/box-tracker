@@ -1,7 +1,7 @@
 import React, { useContext, createContext, useState, useEffect } from 'react';
 import { getDatabase, ref, onValue } from 'firebase/database';
 
-import FcProps from '@typedefs/fc-props';
+import FcProps from 'lib/types/fc-props';
 
 const DatabaseContext = createContext<unknown>(null);
 

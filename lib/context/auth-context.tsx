@@ -8,9 +8,9 @@ import { createContext, useContext } from 'react';
 import { getDatabase, ref, onValue } from 'firebase/database';
 import { useRouter } from 'next/router';
 
-import getFirebase from '@services/firebase';
-import { User } from '@typedefs/user';
-import FcProps from '@typedefs/fc-props';
+import getFirebase from 'lib/services/firebase';
+import { User } from 'lib/types/user';
+import FcProps from 'lib/types/fc-props';
 
 const firebase = getFirebase();
 

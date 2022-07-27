@@ -2,10 +2,11 @@ import React, { useEffect, useState } from 'react';
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import Image from 'next/image';
-import styles from '../styles/Home.module.scss';
 import { useAuth } from '../lib/context/auth-context';
 import { useRouter } from 'next/router';
 import { User } from '../lib/types/user';
+
+import styles from './home.module.scss';
 
 const Home: NextPage = () => {
   const router = useRouter();
