@@ -58,7 +58,9 @@ export const Avatar: React.FC<Props> = ({
   return (
     <div className={styles.avatar} style={{ height: size || '100%' }}>
       {imagePath ? (
-        <img className={styles.image} src={imagePath} alt={name} />
+        <picture>
+          <img className={styles.image} src={imagePath} alt={name} />
+        </picture>
       ) : (
         <div className={styles.initials} style={{ backgroundColor: colour }}>
           <svg viewBox={viewBox}>

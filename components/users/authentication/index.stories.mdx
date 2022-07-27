@@ -47,7 +47,7 @@ The 'continue' button is disabled until the `disableLogin` prop is set to `false
   </Story>
 </Canvas>
 
-An additional text button can be added to the form. Here is an example of it being used as a 'resend code' button.
+An additional text button can be added to the form. Here is an example of it being used as a 'reset password' button.
 
 <Canvas withSource="open">
   <Story name="Extra text button enabled">
@@ -56,9 +56,8 @@ An additional text button can be added to the form. Here is an example of it bei
         {...args}
         disableLogin={false}
         showPassword={false}
-        buttonLabel={'Continue with code'}
         textButton={{
-          label: 'Resend code',
+          label: 'Reset password',
           onClick: () => alert('code resent')
         }}
         onSubmit={(e) => {
@@ -66,49 +65,6 @@ An additional text button can be added to the form. Here is an example of it bei
         }}
       />
     )}
-  </Story>
-</Canvas>
-
-## Example login logic
-
-Here is an example of a login form. It detects if the user is using a 'google.com' email address and if so it hides the password field.
-
-Any other email address will return the email and password on login.
-
-<Canvas withSource="open">
-  <Story name="Google SSO example">
-    {() => {
-      const [formValues, setFormValues] = useState({
-        email: '',
-        password: ''
-      });
-      const [disableLogin, setDisableLogin] = useState(true);
-      const [showPassword, setShowPassword] = useState(true);
-      useEffect(() => {
-        if (formValues.email.includes('@google.com')) {
-          setShowPassword(false);
-          setDisableLogin(false);
-        } else {
-          setShowPassword(true);
-        }
-        if (formValues.email.length > 0 && formValues.password.length > 0) {
-          setDisableLogin(false);
-        }
-      }, [formValues]);
-      const handleLogin = (e) => {
-        e.preventDefault();
-        console.log('Logged in with', formValues);
-        alert(`${formValues.email} is now logged in! See console for details.`);
-      };
-      return (
-        <Authentication
-          showPassword={showPassword}
-          disableLogin={disableLogin}
-          onFormUpdated={setFormValues}
-          onSubmit={handleLogin}
-        />
-      );
-    }}
   </Story>
 </Canvas>
 
