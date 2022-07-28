@@ -7,8 +7,14 @@ const Logout: NextPage = () => {
   const auth = useAuth();
 
   useEffect(() => {
-    auth?.logout();
-    Router.push('/');
+    auth
+      ?.logout()
+      .then(() => {
+        Router.push('/');
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   }, [auth?.logout]);
 
   return null;

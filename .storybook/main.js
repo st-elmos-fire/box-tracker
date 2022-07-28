@@ -16,7 +16,7 @@ module.exports = {
   stories: ['../components/**/*.stories.mdx'],
   addons: ['@storybook/addon-essentials'],
   staticDirs: [
-    { from: '../public', to: '/public' },
+    { from: '../public', to: '/' },
     { from: '../lib/mocks', to: '/mocks' }
   ],
   features: {

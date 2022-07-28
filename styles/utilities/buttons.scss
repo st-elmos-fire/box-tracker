@@ -32,7 +32,25 @@
 @mixin button-primary {
   @include button();
 
-  background-color: $col-action;
+  background-color: $col-primary;
+  color: $col-action-text;
+
+  &:not([disabled]) {
+    &:hover {
+      background-color: $col-action-hover;
+    }
+
+    &:active,
+    &:focus {
+      background-color: $col-action-focus-bg;
+    }
+  }
+}
+
+@mixin button-secondary {
+  @include button();
+
+  background-color: $col-secondary;
   color: $col-action-text;
 
   &:not([disabled]) {

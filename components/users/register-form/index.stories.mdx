@@ -1,0 +1,23 @@
+import { useState, useEffect } from 'react';
+import RegisterForm from './index';
+
+<Meta
+  title="Users/RegisterForm"
+  component={RegisterForm}
+  args={{
+    logoUrl:
+      'https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50?s=200'
+  }}
+/>
+
+# Register Form
+
+The register component is used to display the registration form.
+
+<Canvas withSource="open">
+  <Story name="Default">{(args) => <RegisterForm {...args} />}</Story>
+</Canvas>
+
+## Props
+
+<ArgsTable of={Authentication} />

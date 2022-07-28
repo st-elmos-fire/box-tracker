@@ -1,11 +1,4 @@
-import React, {
-  useState,
-  useId,
-  useEffect,
-  Key,
-  Dispatch,
-  SetStateAction
-} from 'react';
+import React, { useState, useId, useEffect } from 'react';
 
 // Import components
 import { Button, Card, CardBody, InputFactory } from 'components';
@@ -15,11 +8,6 @@ import { useInput } from 'lib/hooks';
 
 // Import Stylesheet
 import styles from './styles.module.scss';
-
-type LoginProps = {
-  email: string;
-  password: string;
-};
 
 // Prop Types
 export interface Props extends React.ComponentProps<'form'> {
@@ -65,12 +53,10 @@ export interface Props extends React.ComponentProps<'form'> {
 
 // Render component
 export const Authentication: React.FC<Props> = ({
-  logoUrl,
   email = '',
   password = '',
   disableLogin = false,
   onLogin,
-  buttonLabel = 'Login',
   textButton = {},
   loginError = '',
   ...props
@@ -92,12 +78,8 @@ export const Authentication: React.FC<Props> = ({
     <Card className={styles['authentication']}>
       <CardBody overflowY="visible" className={styles['body']}>
         <div className={styles['header']}>
-          {logoUrl && (
-            <picture>
-              <img src={logoUrl} alt="Logo" className={styles['logo']} />
-            </picture>
-          )}
-          <h2 className={styles['title']}>Login to What&rsquo;s in the box</h2>
+          <div className={styles['logo']} />
+          <h2 className={styles['title']}>Login to Box Tracker</h2>
         </div>
         <form
           className={styles[`form`]}
@@ -126,28 +108,38 @@ export const Authentication: React.FC<Props> = ({
           {errorMessage && (
             <p className={styles['error-message']}>{errorMessage}</p>
           )}
-          <Button
-            type="submit"
-            className={styles['submit-button']}
-            label={buttonLabel}
-            disabled={disableLogin}
-            onClick={() => {
-              onLogin &&
-                onLogin({
-                  email: emailInput.value as string,
-                  password: passwordInput.value as string
-                });
-            }}
-          />
-          {textButton.label && (
+          <div className={styles['main-buttons']}>
             <Button
-              type="button"
-              className={styles['forgot-password-button']}
-              label={textButton.label}
-              variant="text"
-              onClick={textButton.onClick}
+              type="submit"
+              className={styles['submit-button']}
+              label="Login"
+              disabled={disableLogin}
+              onClick={() => {
+                onLogin &&
+                  onLogin({
+                    email: emailInput.value as string,
+                    password: passwordInput.value as string
+                  });
+              }}
             />
-          )}
+            <Button
+              type="submit"
+              variant="secondary"
+              className={styles['register-button']}
+              label="Register"
+              disabled={disableLogin}
+              onClick={() => {
+                window.location.href = '/register';
+              }}
+            />
+          </div>
+          <Button
+            type="button"
+            className={styles['forgot-password-button']}
+            label="I've forgotten my password"
+            variant="text"
+            onClick={textButton.onClick}
+          />
         </form>
       </CardBody>
     </Card>

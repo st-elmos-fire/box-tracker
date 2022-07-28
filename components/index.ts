@@ -14,19 +14,21 @@ e.g. with registering
   import { fetcher, poster } from 'lib/helpers'
 */
 
-export { default as Button } from './forms/button';
-export { default as InputAutocomplete } from './forms/input-autocomplete';
-export { default as InputCheckbox } from './forms/input-checkbox';
-export { default as InputDatetime } from './forms/input-datetime';
-export { default as InputFactory } from './forms/input-factory';
-export { default as InputFile } from './forms/input-file';
-export { default as InputLabel } from './forms/input-label';
-export { default as InputRadio } from './forms/input-radio';
-export { default as InputRadioGroup } from './forms/input-radio-group';
-export { default as InputSearch } from './forms/input-search';
-export { default as InputSelect } from './forms/input-select';
-export { default as InputText } from './forms/input-text';
-export { default as InputTextarea } from './forms/input-textarea';
+export { default as Button } from './form-elements/button';
+export { default as InputAutocomplete } from './form-elements/input-autocomplete';
+export { default as InputCheckbox } from './form-elements/input-checkbox';
+export { default as InputDatetime } from './form-elements/input-datetime';
+export { default as InputFactory } from './form-elements/input-factory';
+export { default as InputFile } from './form-elements/input-file';
+export { default as InputLabel } from './form-elements/input-label';
+export { default as InputRadio } from './form-elements/input-radio';
+export { default as InputRadioGroup } from './form-elements/input-radio-group';
+export { default as InputSearch } from './form-elements/input-search';
+export { default as InputSelect } from './form-elements/input-select';
+export { default as InputText } from './form-elements/input-text';
+export { default as InputTextarea } from './form-elements/input-textarea';
+export { default as AppHeader } from './layout/app-header';
+export { default as ContextMenu } from './navigation/context-menu';
 export { default as Card } from './presentation/card';
 export { default as CardBody } from './presentation/card-body';
 export { default as CardHeader } from './presentation/card-header';
@@ -38,3 +40,5 @@ export { default as TableHead } from './tables/table-head';
 export { default as TableRow } from './tables/table-row';
 export { default as Authentication } from './users/authentication';
 export { default as Avatar } from './users/avatar';
+export { default as RegisterForm } from './users/register-form';
+export { default as UserMenu } from './users/user-menu';

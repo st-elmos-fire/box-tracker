@@ -11,6 +11,10 @@
   @include utils.button-primary;
 }
 
+.button-secondary {
+  @include utils.button-secondary;
+}
+
 .button-create {
   @include utils.button-create;
 }

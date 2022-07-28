@@ -11,6 +11,7 @@ import { useRouter } from 'next/router';
 import getFirebase from 'lib/services/firebase';
 import { User } from 'lib/types/user';
 import FcProps from 'lib/types/fc-props';
+import { RegisterFormData } from 'components/users/register-form';
 
 const firebase = getFirebase();
 
@@ -78,7 +79,12 @@ const AuthProvider: React.FC<FcProps> = ({ children }) => {
     }
   };
 
-  const register = async (email: string, password: string) => {
+  // TODO: WIP Type error here
+  const register = async (data: RegisterFormData) => {
+    const email = data.email as string;
+    const password = data.password as string;
+    const name = data.name as string;
+
     if (firebase) {
       try {
         const auth = getAuth();

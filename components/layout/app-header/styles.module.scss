@@ -1,41 +1,50 @@
 .app-header {
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: auto 1fr;
-  border-bottom: 1px solid $col-border;
+  background: #4A00E0;  /* fallback for old browsers */
+  background: linear-gradient(-45deg, #4A00E0, #8E2DE2);
+  color: #fff;
+  align-items: center;
   padding: padding(2) padding(3);
-}
+  overflow: hidden;
+  min-height: 160px;
 
-.top {
-  display: grid;
-  grid-template-columns: 1fr;
-
-  .logged-in & {
-    grid-template-columns: 1fr 1fr;
+  &.logged-in {
+    grid-template-columns: 2fr 1fr;
   }
 }
 
 
-.logo-and-title {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  width: 12.5vw;
+.left-col {
+  position: relative;
+  display: grid;
+  grid-template-columns: 70px max-content;
+  justify-content: start;
+  gap: spacing(1);
+  align-content: center;
 }
 
 .logo {
   display: block;
-  width: 100px;
-  img {
-    width: 100%;
-    height: 100%;
-  }
+  width: 60px;
+  height: 60px;
+  border: 10px solid #fff;
+  border-radius: $border-radius;
+  margin-top: margin(1);
 }
 
 .title {
-  font-size: 3rem;
-  font-weight: bold;
+  font-size: 8rem;
+  font-weight: 1000;
+  color: #fff;
+  line-height: 1;
+}
+
+.subtitle {
+  font-size: 1.5rem;
+  font-weight: 500;
+  line-height: 1;
+  margin-left: 5px;
 }
 
 .nav-list {
@@ -43,13 +52,22 @@
   flex-direction: row;
   justify-content: flex-end;
   align-items: center;
-  gap: spacing(1);
+  gap: spacing(2);
 }
 
-.user-info {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-  align-items: top;
-  gap: spacing(1);
+.nav-item {
+  font-size: 1.5rem;
+  a {
+    color: #fff;
+    text-decoration: none;
+  }
+}
+
+.right-col {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  justify-items: end;
+  align-items: end;
+  height: 100%;
+  gap: spacing(2);
 }

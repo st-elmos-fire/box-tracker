@@ -7,7 +7,7 @@ import classNames from 'classnames';
 import styles from './styles.module.scss';
 
 /** Import components */
-import { InputText } from 'components/forms/input-text';
+import { InputText } from 'components/form-elements/input-text';
 
 /* Prop Types */
 import ComponentStatuses from 'lib/types/component-statuses';

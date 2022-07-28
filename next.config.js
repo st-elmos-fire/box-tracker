@@ -41,7 +41,7 @@ module.exports = {
       'default-src': cspString,
       'script-src': cspString,
       'style-src': cspString,
-      'img-src': cspString,
+      'img-src': "'self' https: data:",
       'font-src': cspString,
       'connect-src': connectSrc,
       'frame-src': cspString,

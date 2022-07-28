@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import type { NextPage } from 'next';
-import { useInput } from '../lib/hooks';
 import { useAuth } from '../lib/context/auth-context';
 import { useRouter } from 'next/router';
 
-import styles from './home.module.scss';
-import MainTemplate from 'templates/main';
+import CenterTemplate from 'templates/center';
 import { User } from 'lib/types/user';
 import Link from 'next/link';
 import { Authentication } from 'components';
@@ -29,8 +27,7 @@ const Login: NextPage = () => {
   }, []);
 
   return (
-    <MainTemplate>
-      <h1 className={styles.title}>Login</h1>
+    <CenterTemplate>
       {user?.email ? (
         <p>
           You are already logged in,{' '}
@@ -39,7 +36,7 @@ const Login: NextPage = () => {
       ) : (
         <Authentication onLogin={handleSubmit} />
       )}
-    </MainTemplate>
+    </CenterTemplate>
   );
 };
 

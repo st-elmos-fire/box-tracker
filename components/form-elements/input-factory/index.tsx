@@ -14,7 +14,7 @@ import { InputTypes } from './types/input-types';
 import InputOption from 'lib/types/input-option';
 
 /** Import components */
-import InputLabel from 'components/forms/input-label';
+import InputLabel from 'components/form-elements/input-label';
 
 /** Types */
 
