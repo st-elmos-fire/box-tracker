@@ -1,12 +1,13 @@
 import { useState, useEffect } from 'react';
 import Authentication from './index';
+import { Logo } from 'components';
 
 <Meta
   title="Users/Authentication"
   component={Authentication}
   args={{
-    logoUrl:
-      'https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50?s=200'
+    appName: "Box Tracker",
+    logo: <Logo fill="#000" />
   }}
 />
 
@@ -23,15 +24,7 @@ The authentication component is used to display the authentication form.
   <Story name="Default">{(args) => <Authentication {...args} />}</Story>
 </Canvas>
 
-The password can be shown or hidden by toggling the `showPassword` prop.
-
-<Canvas withSource="open">
-  <Story name="Password hidden">
-    {(args) => <Authentication {...args} showPassword={false} />}
-  </Story>
-</Canvas>
-
-The 'continue' button is disabled until the `disableLogin` prop is set to `false`.
+The 'Login' button is disabled until the `disableLogin` prop is set to `false`.
 
 <Canvas withSource="open">
   <Story name="Login button enabled">
@@ -55,7 +48,6 @@ An additional text button can be added to the form. Here is an example of it bei
       <Authentication
         {...args}
         disableLogin={false}
-        showPassword={false}
         textButton={{
           label: 'Reset password',
           onClick: () => alert('code resent')

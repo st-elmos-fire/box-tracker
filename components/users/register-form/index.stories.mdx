@@ -1,12 +1,13 @@
 import { useState, useEffect } from 'react';
 import RegisterForm from './index';
+import { Logo } from 'components';
 
 <Meta
   title="Users/RegisterForm"
   component={RegisterForm}
   args={{
-    logoUrl:
-      'https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50?s=200'
+    appName: "Box Tracker",
+    logo: <Logo fill="#000"/>
   }}
 />
 
@@ -20,4 +21,4 @@ The register component is used to display the registration form.
 
 ## Props
 
-<ArgsTable of={Authentication} />
+<ArgsTable of={RegisterForm} />

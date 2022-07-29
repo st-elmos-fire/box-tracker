@@ -28,9 +28,10 @@
   display: block;
   width: 60px;
   height: 60px;
-  border: 10px solid #fff;
-  border-radius: $border-radius;
   margin-top: margin(1);
+  svg {
+    fill: #fff;
+  }
 }
 
 .title {

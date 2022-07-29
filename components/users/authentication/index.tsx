@@ -12,9 +12,13 @@ import styles from './styles.module.scss';
 // Prop Types
 export interface Props extends React.ComponentProps<'form'> {
   /**
-   * The path to the logo image (won't be displayed if empty)
+   * The name of the application
    */
-  logoUrl?: string;
+  appName: string;
+  /**
+   * The logo JSX element
+   */
+  logo: JSX.Element;
   /**
    * If the email address is already available, this will be the value of the email input
    */
@@ -53,6 +57,8 @@ export interface Props extends React.ComponentProps<'form'> {
 
 // Render component
 export const Authentication: React.FC<Props> = ({
+  appName,
+  logo,
   email = '',
   password = '',
   disableLogin = false,
@@ -78,8 +84,8 @@ export const Authentication: React.FC<Props> = ({
     <Card className={styles['authentication']}>
       <CardBody overflowY="visible" className={styles['body']}>
         <div className={styles['header']}>
-          <div className={styles['logo']} />
-          <h2 className={styles['title']}>Login to Box Tracker</h2>
+          <div className={styles['logo']}>{logo}</div>
+          <h2 className={styles['title']}>Login to {appName}</h2>
         </div>
         <form
           className={styles[`form`]}

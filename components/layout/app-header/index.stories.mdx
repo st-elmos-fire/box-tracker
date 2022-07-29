@@ -2,8 +2,15 @@ import AppHeader from './index';
 
 import users from 'lib/mocks/users';
 
+import { Logo } from 'components';
+
 <Meta
   title="Layout/AppHeader"
+  args={{
+    appName: "Box Tracker",
+    appSubtitle: <span>The <strong>essential</strong> moving companion</span>,
+    logo: <Logo />
+  }}
 />
 
 # App header
@@ -12,17 +19,17 @@ The `AppHeader` component is the header section of the application. It is used t
 
 <Canvas withSource="open">
   <Story name="Logged out">
-    <AppHeader>
-      <p>This card is the default card with all of the styling intact</p>
-    </AppHeader>
+    {
+      (args) => <AppHeader {...args} />
+    }
   </Story>
 </Canvas>
 
 
 <Canvas withSource="open">
   <Story name="Logged in">
-    <AppHeader user={users[0]}>
-      <p>This card is the default card with all of the styling intact</p>
-    </AppHeader>
+    {
+      (args) => <AppHeader {...args} user={users[0]} />
+    }
   </Story>
 </Canvas>

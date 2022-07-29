@@ -32,6 +32,7 @@ export { default as ContextMenu } from './navigation/context-menu';
 export { default as Card } from './presentation/card';
 export { default as CardBody } from './presentation/card-body';
 export { default as CardHeader } from './presentation/card-header';
+export { default as Logo } from './presentation/logo';
 export { default as Table } from './tables/table';
 export { default as TableBody } from './tables/table-body';
 export { default as TableCell } from './tables/table-cell';

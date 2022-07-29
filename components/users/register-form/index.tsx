@@ -22,12 +22,25 @@ export interface RegisterFormData {
 // Prop Types
 export interface Props extends React.ComponentProps<'form'> {
   /**
+   * The name of the application
+   */
+  appName: string;
+  /**
+   * The logo JSX element
+   */
+  logo: JSX.Element;
+  /**
    * The function to use to register the user
    */
   onRegister: (data: RegisterFormData) => void;
 }
 
-export const RegisterForm: React.FC<Props> = ({ onRegister, ...props }) => {
+export const RegisterForm: React.FC<Props> = ({
+  appName,
+  logo,
+  onRegister,
+  ...props
+}) => {
   const [errors, setErrors] = useState([
     {
       input: 'none',
@@ -121,8 +134,8 @@ export const RegisterForm: React.FC<Props> = ({ onRegister, ...props }) => {
     <Card className={styles['register']}>
       <CardBody overflowY="visible" className={styles['body']}>
         <div className={styles['header']}>
-          <div className={styles['logo']} />
-          <h2 className={styles['title']}>Sign up to Box Tracker</h2>
+          <div className={styles['logo']}>{logo}</div>
+          <h2 className={styles['title']}>Sign up to {appName}</h2>
         </div>
         <form
           className={styles[`form`]}
