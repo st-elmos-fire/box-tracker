@@ -1,0 +1,30 @@
+import TopNavigation from './index';
+
+import users from 'lib/mocks/users';
+
+import links from 'lib/mocks/links';
+
+<Meta
+  title="Navigation/TopNavigation"
+  args={{
+    links
+  }}
+/>
+
+# App header
+
+The `TopNavigation` component is the header section of the application. It is used to display the logo, application name, user details and primary navigation.
+
+<Tip type="note">
+  The navigation has a transparent background. It is shown with a coloured background here so that the white text can be seen.
+</Tip>
+
+<Canvas withSource="open">
+  <Story name="default">
+    {
+      (args) => <div style={{ padding: '20px', backgroundColor: 'rebeccapurple' }}>
+        <TopNavigation {...args} />
+      </div>
+    }
+  </Story>
+</Canvas>

@@ -2,6 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 
 import { MdAutorenew, MdDelete, MdAdd, MdEdit, MdClose } from 'react-icons/md';
+import { Spinner } from 'components';
 
 /* Define available presets here */
 
@@ -145,8 +146,8 @@ export const Button: React.FC<Props> = ({
       )}
       {loading && (
         <>
-          <MdAutorenew />
-          <span>{loadingIndicator}...</span>
+          <Spinner fill="#fff" />
+          <span>{loadingIndicator || 'Loading...'}</span>
         </>
       )}
     </button>

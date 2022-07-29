@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
+import { useRouter } from 'next/router';
 
 // Stylesheet
 import styles from './styles.module.scss';
 
 // Components
-import { Avatar, ContextMenu } from 'components';
+import { Avatar, Button, ContextMenu } from 'components';
 
 // Types
 import { User } from 'lib/types/user';
@@ -12,7 +13,7 @@ export interface Props extends React.ComponentProps<'div'> {
   /**
    * The User object (if logged in)
    */
-  user: User;
+  user?: User;
 }
 
 const ProfileIcon = () => (
@@ -63,6 +64,25 @@ const menuLinks = [
 // Render component
 export const UserMenu: React.FC<Props> = ({ user, ...props }: Props) => {
   const [menuOpen, setMenuOpen] = useState(false);
+
+  const router = useRouter();
+
+  if (!user?.displayName) {
+    return (
+      <div className={styles['buttons']}>
+        <Button
+          label="Sign up"
+          variant="primary"
+          onClick={() => router.push('/register')}
+        />
+        <Button
+          label="Login"
+          variant="secondary"
+          onClick={() => router.push('/login')}
+        />
+      </div>
+    );
+  }
 
   return (
     <div

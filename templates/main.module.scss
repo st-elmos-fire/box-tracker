@@ -1,3 +1,9 @@
+.container {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 180px 1fr 50px;
+  height: 100vh;
+}
 .main {
   background-color: $col-background;
   padding: padding(2);

@@ -1,0 +1,35 @@
+.app-footer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: #4A00E0;  /* fallback for old browsers */
+  background: linear-gradient(-45deg, #4A00E0, #8E2DE2);
+  color: #fff;
+  align-items: center;
+  padding: padding(1) padding(2);
+  overflow: hidden;
+}
+
+
+.left-col {
+  position: relative;
+  justify-content: start;
+  gap: spacing(1);
+  align-content: center;
+}
+
+.nav-list {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  gap: spacing(2);
+}
+
+
+.right-col {
+  display: grid;
+  justify-items: end;
+  align-items: center;
+  height: 100%;
+  gap: spacing(2);
+}

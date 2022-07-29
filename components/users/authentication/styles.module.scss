@@ -48,18 +48,14 @@
   width: 100%;
 }
 
-.welcome-back-message {
-  font-weight: bold;
-  text-align: center;
-}
-
 .error-message {
   color: $col-danger;
-  margin-top: spacing(2);
+  margin-top: -#{spacing(2)};
 }
 
 .main-buttons {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  gap: spacing(1);
   justify-items: stretch;
 }

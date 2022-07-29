@@ -16,3 +16,10 @@
   top: 60px;
   right: 0;
 }
+
+.buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: spacing(.5);
+  justify-items: end;
+}

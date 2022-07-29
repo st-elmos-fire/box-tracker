@@ -2,3 +2,16 @@
   background-color: $col-background;
   padding: padding(2);
 }
+
+.card-header {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: $col-body-text;
+  text-align: center;
+  margin: margin(1);
+}
+
+.card-body {
+  display: grid;
+  place-items: center;
+}

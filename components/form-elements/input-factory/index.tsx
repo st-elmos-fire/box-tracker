@@ -108,8 +108,8 @@ export const InputFactory: React.FC<Props> = ({
   disabled,
   className,
   width = '100%',
-  minWidth = 'auto',
-  maxWidth = 'auto',
+  minWidth = 'max-content',
+  maxWidth = '100%',
   ...props
 }) => {
   const generateID = testID || id || generateId(name, type);

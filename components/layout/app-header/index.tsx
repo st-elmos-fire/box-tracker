@@ -1,12 +1,16 @@
 import React from 'react';
+import Link from 'next/link';
 
 // Stylesheet
 import styles from './styles.module.scss';
 
 // Types
 import { User } from 'lib/types/user';
-import Link from 'next/link';
+import LinkObject from 'lib/types/link-object';
+
+// Components
 import UserMenu from 'components/users/user-menu';
+import TopNavigation from 'components/navigation/top-navigation';
 export interface Props extends React.ComponentProps<'header'> {
   /**
    * The app Name
@@ -24,6 +28,10 @@ export interface Props extends React.ComponentProps<'header'> {
    * The User object (if logged in)
    */
   user?: User;
+  /**
+   * The list of links to display
+   */
+  links: LinkObject[];
 }
 
 // Render component
@@ -31,6 +39,7 @@ export const AppHeader: React.FC<Props> = ({
   user,
   appName,
   appSubtitle,
+  links,
   logo
 }: Props) => (
   <header className={`${styles['app-header']} ${user && styles['logged-in']}`}>
@@ -41,30 +50,10 @@ export const AppHeader: React.FC<Props> = ({
         <p className={styles['subtitle']}>{appSubtitle}</p>
       </div>
     </div>
-    {user && (
-      <div className={styles['right-col']}>
-        <UserMenu user={user} />
-        <nav>
-          <ul className={styles['nav-list']}>
-            <li className={styles['nav-item']}>
-              <Link href="/">
-                <a>Home</a>
-              </Link>
-            </li>
-            <li className={styles['nav-item']}>
-              <Link href="/">
-                <a>About</a>
-              </Link>
-            </li>
-            <li className={styles['nav-item']}>
-              <Link href="/">
-                <a>Contact</a>
-              </Link>
-            </li>
-          </ul>
-        </nav>
-      </div>
-    )}
+    <div className={styles['right-col']}>
+      <UserMenu user={user} />
+      <TopNavigation links={links} />
+    </div>
   </header>
 );
 

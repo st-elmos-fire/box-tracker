@@ -1,10 +1,13 @@
 import React, { useState, useId, useEffect } from 'react';
+import { useFormik, FormikValues, FormikProps } from 'formik';
+import { useRouter } from 'next/router';
+import * as yup from 'yup';
 
 // Import components
 import { Button, Card, CardBody, InputFactory } from 'components';
 
-// Import hooks
-import { useInput } from 'lib/hooks';
+// Import helpers
+import { handleFormValidation } from 'lib/helpers';
 
 // Import Stylesheet
 import styles from './styles.module.scss';
@@ -42,35 +45,46 @@ export interface Props extends React.ComponentProps<'form'> {
    */
   buttonLabel?: string;
   /**
-   * Props for an additional text button (button doesn't show up if not provided)
-   * @default {}
-   */
-  textButton?: {
-    label?: string;
-    onClick?: () => void;
-  };
-  /**
    * If there is an error, display it here
    */
   loginError?: string;
+}
+
+const validationSchema = yup.object().shape({
+  email: yup.string().email().required(),
+  password: yup.string().required()
+});
+
+export interface LoginFormData {
+  email: string;
+  password: string;
 }
 
 // Render component
 export const Authentication: React.FC<Props> = ({
   appName,
   logo,
-  email = '',
-  password = '',
-  disableLogin = false,
+  disableLogin,
   onLogin,
-  textButton = {},
   loginError = '',
   ...props
 }) => {
   const [errorMessage, setErrorMessage] = useState(loginError);
 
-  const emailInput = useInput(email);
-  const passwordInput = useInput(password);
+  const router = useRouter();
+
+  const formik = useFormik({
+    initialValues: {
+      email: '',
+      password: ''
+    },
+    validationSchema,
+    onSubmit: (values: LoginFormData) => {
+      if (onLogin) {
+        onLogin(values);
+      }
+    }
+  }) as unknown as FormikProps<FormikValues>;
 
   useEffect(() => {
     setErrorMessage(loginError);
@@ -91,24 +105,22 @@ export const Authentication: React.FC<Props> = ({
           className={styles[`form`]}
           {...props}
           id={formId}
-          onSubmit={(e) => {
-            e.preventDefault();
-          }}
+          onSubmit={formik.handleSubmit}
         >
           <>
             <InputFactory
               id={emailId}
               labelText="Email"
-              name="email"
               type="email"
-              {...emailInput}
+              {...formik.getFieldProps('email')}
+              {...handleFormValidation(formik, 'email')}
             />
             <InputFactory
               id={passwordId}
               labelText="Password"
-              name="password"
               type="password"
-              {...passwordInput}
+              {...formik.getFieldProps('password')}
+              {...handleFormValidation(formik, 'password')}
             />
           </>
           {errorMessage && (
@@ -119,33 +131,36 @@ export const Authentication: React.FC<Props> = ({
               type="submit"
               className={styles['submit-button']}
               label="Login"
-              disabled={disableLogin}
-              onClick={() => {
-                onLogin &&
-                  onLogin({
-                    email: emailInput.value as string,
-                    password: passwordInput.value as string
-                  });
-              }}
+              loading={!errorMessage && formik.isSubmitting}
+              loadingIndicator="Logging in..."
+              disabled={
+                !formik.dirty ||
+                formik.isValidating ||
+                !formik.isValid ||
+                disableLogin
+              }
             />
             <Button
               type="submit"
               variant="secondary"
               className={styles['register-button']}
               label="Register"
-              disabled={disableLogin}
               onClick={() => {
-                window.location.href = '/register';
+                router.push('/register');
               }}
             />
           </div>
-          <Button
+          {/* <Button
             type="button"
             className={styles['forgot-password-button']}
             label="I've forgotten my password"
             variant="text"
-            onClick={textButton.onClick}
-          />
+            onClick={() =>
+              alert(
+                "well that's a bugger, I've not implemented the password reset yet!"
+              )
+            }
+          /> */}
         </form>
       </CardBody>
     </Card>

@@ -29,6 +29,7 @@
     "classnames": "^2.3.1",
     "dotenv": "^16.0.1",
     "firebase": "^9.9.1",
+    "formik": "^2.2.9",
     "full-icu": "^1.4.0",
     "husky": "^8.0.1",
     "improved-yarn-audit": "^3.0.0",
@@ -54,7 +55,8 @@
     "style-loader": "^3.3.1",
     "stylelint": "^14.9.1",
     "stylelint-config-prettier": "^9.0.3",
-    "stylelint-config-sass-guidelines": "^9.0.1"
+    "stylelint-config-sass-guidelines": "^9.0.1",
+    "yup": "^0.32.11"
   },
   "devDependencies": {
     "@babel/core": "^7.18.9",

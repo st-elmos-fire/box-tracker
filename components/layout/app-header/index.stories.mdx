@@ -1,15 +1,18 @@
 import AppHeader from './index';
 
 import users from 'lib/mocks/users';
+import links from 'lib/mocks/links';
 
 import { Logo } from 'components';
+
 
 <Meta
   title="Layout/AppHeader"
   args={{
     appName: "Box Tracker",
     appSubtitle: <span>The <strong>essential</strong> moving companion</span>,
-    logo: <Logo />
+    logo: <Logo />,
+    links: links,
   }}
 />
 

@@ -1,0 +1,23 @@
+.nav-list {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  gap: spacing(2);
+  a {
+    color: #fff;
+    text-decoration: none;
+    line-height: 1;
+    display: flex;
+    gap: spacing(.5);
+    padding-bottom: padding(.5);
+    &:hover {
+      border-bottom: 1px solid #fff;
+    }
+  }
+
+  svg {
+    height: 12px;
+  }
+}
+
