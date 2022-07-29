@@ -5,6 +5,8 @@ import { DatabaseProvider } from '../lib/context/database-context';
 
 // Import theme
 import 'styles/index.scss';
+// Import stylesheet for react-crop-image
+import 'react-image-crop/dist/ReactCrop.css';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (

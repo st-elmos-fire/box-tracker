@@ -10,6 +10,7 @@ import pretty from 'pretty';
 import addons from '@storybook/addons';
 
 import 'styles/index.scss';
+import 'react-image-crop/dist/ReactCrop.css';
 
 // get an instance to the communication channel for the manager and preview
 const channel = addons.getChannel();

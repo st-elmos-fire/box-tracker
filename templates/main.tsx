@@ -6,7 +6,7 @@ import Head from 'next/head';
 import styles from './main.module.scss';
 
 // Import icons
-import { Icons } from '../components/icons';
+import { Icons } from '../lib/icons';
 
 // Import components
 import { AppHeader, AppFooter, Logo } from 'components';
