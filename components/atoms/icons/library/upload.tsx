@@ -2,7 +2,7 @@ import React, { SVGAttributes } from 'react';
 
 export type Props = SVGAttributes<SVGElement>;
 
-export const AppLogo: React.FC<Props> = ({
+export const Upload: React.FC<Props> = ({
   fill = 'currentColor',
   ...props
 }: Props) => (
@@ -21,4 +21,6 @@ export const AppLogo: React.FC<Props> = ({
   </svg>
 );
 
-export default AppLogo;
+Upload.displayName = 'Upload';
+
+export default Upload;

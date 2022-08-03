@@ -17,4 +17,6 @@ export const House: React.FC<Props> = ({
   </svg>
 );
 
+House.displayName = 'House';
+
 export default House;

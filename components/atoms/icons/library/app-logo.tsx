@@ -22,4 +22,6 @@ export const AppLogo: React.FC<Props> = ({
   </svg>
 );
 
+AppLogo.displayName = 'AppLogo';
+
 export default AppLogo;
