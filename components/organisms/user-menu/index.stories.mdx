@@ -1,0 +1,17 @@
+import UserMenu from './index';
+
+import users from 'lib/mocks/users';
+
+<Meta
+  title="Organism/UserMenu"
+/>
+
+# UserMenu
+
+The `UserMenu` component is used to display the logged in users avatar and a dropdown menu of their account options.
+
+<Canvas withSource="open">
+  <Story name="Default">
+    <UserMenu user={users[0]} />
+  </Story>
+</Canvas>

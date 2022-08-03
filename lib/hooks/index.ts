@@ -14,5 +14,6 @@ e.g. with registering
   import { fetcher, poster } from 'lib/helpers'
 */
 
-export { default as useSize } from './use-size';
 export { default as useDebounceEffect } from './use-debounce-effect';
+export { default as useSize } from './use-size';
+export { default as useInput } from './useInput';

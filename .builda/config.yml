@@ -1,0 +1,42 @@
+app:
+  name: My App
+commands:
+  atom:
+    type: scaffold
+    outputDirectory: ./components/atoms
+    use: 'foxys-own'
+    substitutions:
+      - name: 'prefix'
+        default: 'Atom'
+      - name: 'suffix'
+        default: 'Component'
+  molecule:
+    type: scaffold
+    outputDirectory: ./components/molecules
+    use: 'foxys-own'
+    substitutions:
+      - name: 'prefix'
+        default: 'Molecule'
+      - name: 'suffix'
+        default: 'Component'
+  organism:
+    type: scaffold
+    outputDirectory: ./components/organisms
+    use: 'foxys-own'
+    substitutions:
+      - name: 'prefix'
+        default: 'Organism'
+      - name: 'suffix'
+        default: 'Component'
+  input:
+    type: scaffold
+    outputDirectory: ./components/inputs
+    use: 'foxys-own'
+    substitutions:
+      - name: 'prefix'
+        default: 'Input'
+      - name: 'suffix'
+        default: 'Component'
+modules:
+  scaffold:
+    foxys-own: 1.0.1

@@ -7,13 +7,13 @@ import { User } from 'lib/types/user';
 import Link from 'next/link';
 
 // Import components
-import { RegisterForm, Logo, Card, CardBody, CardHeader } from 'components';
+import { RegisterForm, Logo, Card } from 'components';
 
 // Import styles
 import styles from './home.module.scss';
 
 // Import types
-import { RegisterFormData } from 'components/users/register-form';
+import { RegisterFormData } from 'components/organisms/register-form';
 
 const Login: NextPage = () => {
   const auth = useAuth();
@@ -49,39 +49,39 @@ const Login: NextPage = () => {
   return (
     <CenterTemplate>
       {user?.email ? (
-        <Card>
-          <CardHeader>
+        <Card.Card>
+          <Card.CardHeader>
             <h2 className={styles['card-header']}>
               {' '}
               🤦‍♂️ You are already registered!
             </h2>
-          </CardHeader>
-          <CardBody className={styles['card-body']}>
+          </Card.CardHeader>
+          <Card.CardBody className={styles['card-body']}>
             <p>
               <Link href="/">
                 <a>Click here to return to the home page</a>
               </Link>
               .
             </p>
-          </CardBody>
-        </Card>
+          </Card.CardBody>
+        </Card.Card>
       ) : registered ? (
-        <Card>
-          <CardHeader>
+        <Card.Card>
+          <Card.CardHeader>
             <h2 className={styles['card-header']}>
               {' '}
               🎉 Welcome, {userName}, you are registered!
             </h2>
-          </CardHeader>
-          <CardBody className={styles['card-body']}>
+          </Card.CardHeader>
+          <Card.CardBody className={styles['card-body']}>
             <p>
               <Link href="/login">
                 <a>Click here to login</a>
               </Link>
               .
             </p>
-          </CardBody>
-        </Card>
+          </Card.CardBody>
+        </Card.Card>
       ) : (
         <RegisterForm
           appName={process.env.NEXT_PUBLIC_APP_NAME || ''}

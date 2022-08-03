@@ -1,0 +1,38 @@
+import AppHeader from './index';
+
+import users from 'lib/mocks/users';
+import links from 'lib/mocks/links';
+
+import { Logo } from 'components';
+
+
+<Meta
+  title="Organism/AppHeader"
+  args={{
+    appName: "Box Tracker",
+    appSubtitle: <span>The <strong>essential</strong> moving companion</span>,
+    logo: <Logo />,
+    links: links,
+  }}
+/>
+
+# App header
+
+The `AppHeader` component is the header section of the application. It is used to display the logo, application name, user details and primary navigation.
+
+<Canvas withSource="open">
+  <Story name="Logged out">
+    {
+      (args) => <AppHeader {...args} />
+    }
+  </Story>
+</Canvas>
+
+
+<Canvas withSource="open">
+  <Story name="Logged in">
+    {
+      (args) => <AppHeader {...args} user={users[0]} />
+    }
+  </Story>
+</Canvas>
