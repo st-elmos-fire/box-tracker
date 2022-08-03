@@ -12,6 +12,7 @@ import LinkTo from '@storybook/addon-links/react';
 import Badge from './doc-blocks/badge';
 import Tip from './doc-blocks/tip';
 import WorksWith from './doc-blocks/works-with';
+import Title from './doc-blocks/title';
 
 import pretty from 'pretty';
 
@@ -96,6 +97,7 @@ export const parameters = {
       IconItem,
       LinkTo,
       Badge,
+      Title,
       Tip,
       WorksWith
     },

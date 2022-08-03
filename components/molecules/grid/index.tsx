@@ -24,7 +24,9 @@ export interface Props {
   columns?: 1 | 2 | 3 | 4 | 5;
 }
 
-// Render component
+/**
+ * The Grid component is a wrapper component which allows you to display children in a grid equally sized grid. Up to 5 columns can be displayed in a row.
+ */
 export const Grid: React.FC<Props> = ({
   children,
   className,

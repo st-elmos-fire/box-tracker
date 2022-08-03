@@ -93,3 +93,21 @@
   display: block;
   padding: 1rem;
 }
+
+.title {
+  display: grid;
+  grid-template-columns: max-content max-content;
+  gap: 2rem;
+  align-items: center;
+}
+
+.tip-badge {
+  margin-top: 0;
+  padding: 0.5rem 0.8rem;
+}
+
+.title h1 {
+  font-size: 4rem;
+  margin: 0;
+  line-height: 1;
+}
