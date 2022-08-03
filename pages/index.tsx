@@ -18,7 +18,7 @@ const Home: NextPage = () => {
 
   return (
     <MainTemplate user={user}>
-      <h1 className={styles.title}>Welcome {user?.displayName}</h1>
+      
     </MainTemplate>
   );
 };

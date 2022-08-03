@@ -6,7 +6,7 @@ import { useRouter } from 'next/router';
 import CenterTemplate from 'templates/center';
 import { User } from 'lib/types/user';
 import Link from 'next/link';
-import { Authentication, Card, CardBody, CardHeader, Logo } from 'components';
+import { Authentication, Card, Logo } from 'components';
 
 import styles from './home.module.scss';
 
@@ -41,20 +41,20 @@ const Login: NextPage = () => {
     <CenterTemplate>
       {user?.email ? (
         <Card>
-          <CardHeader>
+          <Card.Header>
             <h2 className={styles['card-header']}>
               {' '}
               🤦‍♂️ You are already logged in!
             </h2>
-          </CardHeader>
-          <CardBody className={styles['card-body']}>
+          </Card.Header>
+          <Card.Body className={styles['card-body']}>
             <p>
               <Link href="/">
                 <a>Click here to return to the home page</a>
               </Link>
               .
             </p>
-          </CardBody>
+          </Card.Body>
         </Card>
       ) : (
         <Authentication

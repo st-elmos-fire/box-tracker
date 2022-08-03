@@ -6,7 +6,7 @@ import Head from 'next/head';
 import styles from './main.module.scss';
 
 // Import icons
-import { Icons } from '../lib/icons';
+import { Icons } from 'components';
 
 // Import components
 import { AppHeader, AppFooter, Logo } from 'components';
@@ -26,7 +26,7 @@ const MainTemplate: NextPage<Props> = ({ children, user }: Props) => {
     {
       href: '/',
       label: 'Home',
-      icon: <Icons.house width={'15px'} />
+      icon: <Icons.House width={'15px'} />
     },
     {
       href: '/about',

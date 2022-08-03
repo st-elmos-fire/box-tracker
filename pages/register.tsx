@@ -49,39 +49,39 @@ const Login: NextPage = () => {
   return (
     <CenterTemplate>
       {user?.email ? (
-        <Card.Card>
-          <Card.CardHeader>
+        <Card>
+          <Card.Header>
             <h2 className={styles['card-header']}>
               {' '}
               🤦‍♂️ You are already registered!
             </h2>
-          </Card.CardHeader>
-          <Card.CardBody className={styles['card-body']}>
+          </Card.Header>
+          <Card.Body className={styles['card-body']}>
             <p>
               <Link href="/">
                 <a>Click here to return to the home page</a>
               </Link>
               .
             </p>
-          </Card.CardBody>
-        </Card.Card>
+          </Card.Body>
+        </Card>
       ) : registered ? (
-        <Card.Card>
-          <Card.CardHeader>
+        <Card>
+          <Card.Header>
             <h2 className={styles['card-header']}>
               {' '}
               🎉 Welcome, {userName}, you are registered!
             </h2>
-          </Card.CardHeader>
-          <Card.CardBody className={styles['card-body']}>
+          </Card.Header>
+          <Card.Body className={styles['card-body']}>
             <p>
               <Link href="/login">
                 <a>Click here to login</a>
               </Link>
               .
             </p>
-          </Card.CardBody>
-        </Card.Card>
+          </Card.Body>
+        </Card>
       ) : (
         <RegisterForm
           appName={process.env.NEXT_PUBLIC_APP_NAME || ''}
