@@ -1,4 +1,12 @@
-import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs';
+import {
+  Meta,
+  Story,
+  Canvas,
+  Description,
+  ArgsTable,
+  IconGallery,
+  IconItem
+} from '@storybook/addon-docs';
 import LinkTo from '@storybook/addon-links/react';
 
 import Badge from './doc-blocks/badge';
@@ -82,7 +90,10 @@ export const parameters = {
       Meta,
       Story,
       Canvas,
+      Description,
       ArgsTable,
+      IconGallery,
+      IconItem,
       LinkTo,
       Badge,
       Tip,
