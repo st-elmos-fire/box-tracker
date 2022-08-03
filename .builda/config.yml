@@ -3,39 +3,39 @@ app:
 commands:
   atom:
     type: scaffold
-    outputDirectory: ./components/atoms
+    outputPath: ./components/atoms
     use: 'foxys-own'
-    substitutions:
-      - name: 'prefix'
+    substitute:
+      - string: 'prefix'
         default: 'Atom'
-      - name: 'suffix'
+      - string: 'type'
         default: 'Component'
   molecule:
     type: scaffold
-    outputDirectory: ./components/molecules
+    outputPath: ./components/molecules
     use: 'foxys-own'
-    substitutions:
-      - name: 'prefix'
+    substitute:
+      - string: 'prefix'
         default: 'Molecule'
-      - name: 'suffix'
+      - string: 'type'
         default: 'Component'
   organism:
     type: scaffold
-    outputDirectory: ./components/organisms
+    outputPath: ./components/organisms
     use: 'foxys-own'
-    substitutions:
-      - name: 'prefix'
-        default: 'Organism'
-      - name: 'suffix'
-        default: 'Component'
+    substitute:
+      - string: prefix
+        default: Organism
+      - string: type
+        default: Component
   input:
     type: scaffold
-    outputDirectory: ./components/inputs
+    outputPath: ./components/inputs
     use: 'foxys-own'
-    substitutions:
-      - name: 'prefix'
+    substitute:
+      - string: 'prefix'
         default: 'Input'
-      - name: 'suffix'
+      - string: 'type'
         default: 'Component'
 modules:
   scaffold:
