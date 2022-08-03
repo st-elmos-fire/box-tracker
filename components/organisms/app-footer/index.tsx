@@ -23,7 +23,9 @@ export interface Props extends React.ComponentProps<'header'> {
   rightLinks?: LinkObject[];
 }
 
-// Render component
+/**
+ * The `AppFooter` component is the footer section of the application. It is used to display the copywrite information and useful links.
+ */
 export const AppFooter: React.FC<Props> = ({
   appName,
   leftLinks,

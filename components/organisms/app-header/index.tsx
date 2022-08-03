@@ -34,7 +34,9 @@ export interface Props extends React.ComponentProps<'header'> {
   links: LinkObject[];
 }
 
-// Render component
+/**
+ * The `AppHeader` component is the header section of the application. It is used to display the logo, application name, user details and primary navigation.
+ */
 export const AppHeader: React.FC<Props> = ({
   user,
   appName,

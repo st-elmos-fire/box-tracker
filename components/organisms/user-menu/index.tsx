@@ -61,7 +61,9 @@ const menuLinks = [
   }
 ];
 
-// Render component
+/**
+ * The `UserMenu` component is used to display the logged in users avatar and a dropdown menu of their account options.
+ */
 export const UserMenu: React.FC<Props> = ({ user, ...props }: Props) => {
   const [menuOpen, setMenuOpen] = useState(false);
 

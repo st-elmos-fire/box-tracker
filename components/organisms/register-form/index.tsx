@@ -54,6 +54,9 @@ export interface Props extends React.ComponentProps<'form'> {
   registerError?: string;
 }
 
+/**
+ * The register component is used to display the registration form.
+ */
 export const RegisterForm: React.FC<Props> = ({
   appName,
   logo,

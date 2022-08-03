@@ -16,6 +16,7 @@ e.g. with registering
 
 export { default as Avatar } from './atoms/avatar';
 export { default as Button } from './atoms/button';
+export { default as Icons } from './atoms/icons';
 export { default as Logo } from './atoms/logo';
 export { default as Spinner } from './atoms/spinner';
 export { default as InputAutocomplete } from './inputs/input-autocomplete';

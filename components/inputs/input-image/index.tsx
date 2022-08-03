@@ -9,7 +9,7 @@ import styles from './styles.module.scss';
 import { ComponentStatuses } from 'lib/types/component-statuses';
 
 // Import icons
-import { Icons } from 'lib/icons';
+import { Icons } from 'components';
 
 // Import components
 import { Button, Modal } from 'components';
@@ -119,7 +119,7 @@ export const InputInmage: React.FC<Props> = ({
       style={{ width: typeof width === 'number' ? `${width}px` : width }}
     >
       <div className={styles['fake-input']}>
-        <Icons.upload width={40} />
+        <Icons.Upload width={40} />
         Upload file...
       </div>
       <input

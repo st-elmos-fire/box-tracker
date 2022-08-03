@@ -60,7 +60,9 @@ export interface LoginFormData {
   password: string;
 }
 
-// Render component
+/**
+ * The `Authentication` component is used to display the authentication form.
+ **/
 export const Authentication: React.FC<Props> = ({
   appName,
   logo,

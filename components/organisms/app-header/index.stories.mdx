@@ -5,12 +5,13 @@ import links from 'lib/mocks/links';
 
 import { Logo } from 'components';
 
+export const SubtitleGoesHere = () => <span>The <strong>essential</strong> moving companion</span>
 
 <Meta
   title="Organism/AppHeader"
   args={{
     appName: "Box Tracker",
-    appSubtitle: <span>The <strong>essential</strong> moving companion</span>,
+    appSubtitle: <SubtitleGoesHere />,
     logo: <Logo />,
     links: links,
   }}
@@ -18,9 +19,9 @@ import { Logo } from 'components';
 
 # App header
 
-The `AppHeader` component is the header section of the application. It is used to display the logo, application name, user details and primary navigation.
+<Description of={AppHeader} />
 
-<Canvas withSource="open">
+<Canvas withSource="open" withToolbar>
   <Story name="Logged out">
     {
       (args) => <AppHeader {...args} />
@@ -29,7 +30,7 @@ The `AppHeader` component is the header section of the application. It is used t
 </Canvas>
 
 
-<Canvas withSource="open">
+<Canvas withToolbar>
   <Story name="Logged in">
     {
       (args) => <AppHeader {...args} user={users[0]} />

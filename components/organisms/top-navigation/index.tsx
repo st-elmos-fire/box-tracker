@@ -15,7 +15,9 @@ export interface Props extends React.ComponentProps<'header'> {
   links: LinkObject[];
 }
 
-// Render component
+/**
+ * The `TopNavigation` component is the header section of the application. It is used to display the logo, application name, user details and primary navigation.
+ */
 export const TopNavigation: React.FC<Props> = ({ links }: Props) => (
   <nav>
     <ul className={styles['nav-list']}>

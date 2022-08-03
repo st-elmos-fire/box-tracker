@@ -85,7 +85,15 @@ function toTitleCase(str: string) {
   });
 }
 
-/* Render component */
+/**
+ * The `TableFactory` component is a generator, which, when given the appropriate data,
+ * will generate a table using the [Table](?path=/docs/molecule-table--default-story)
+ * component.
+ *
+ * This is a much simpler way to generate a table than the `Table` component, which
+ * is a very manual process. Unless you require a lot of granualar customisation,
+ * the `TableFactory` component is the recommended approach.
+ */
 export const TableFactory: React.FC<Props> = ({
   className,
   header,

@@ -20,7 +20,9 @@ export interface Props extends React.ComponentProps<'nav'> {
   showMenu?: boolean;
 }
 
-// Render component
+/**
+ * The `ContextMenu` component is used to display a menu of links in a dropdown menu.
+ */
 export const ContextMenu: React.FC<Props> = ({
   links,
   showMenu = false,
