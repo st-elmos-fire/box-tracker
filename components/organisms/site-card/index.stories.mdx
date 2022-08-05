@@ -1,0 +1,28 @@
+import { SiteCard } from "./index.tsx";
+
+<Meta
+  title="Organism/Site card"
+  component={SiteCard}
+/>
+
+<Title type="ALPHA">Site card</Title>
+
+<Description of={SiteCard} />
+
+<Canvas withSource="open">
+ <Story
+    name="Default"
+    args={{
+      name: "Meteor Street",
+      address: "23 Meteor Street, Tuffnell Park, London, N7 90PW",
+      type: "source",
+      boxes: []
+    }}
+  >
+    {(args) => <SiteCard {...args} />}
+  </Story>
+</Canvas>
+
+## Props
+
+<ArgsTable of={SiteCard} />

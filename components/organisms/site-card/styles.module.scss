@@ -1,0 +1,30 @@
+.site-card {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: max-content 1fr;
+  gap: spacing(1);
+  background-color: $col-alt-panel-bg;
+  border-radius: $border-radius-lg;
+}
+
+.header {
+  padding: padding(2);
+  background-image: linear-gradient(130deg, $col-primary, lighten($col-primary, 30%));
+  border-top-left-radius: $border-radius-lg;
+  border-top-right-radius: $border-radius-lg;
+}
+
+.site-name {
+  font-size: 4rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: $col-light;
+  line-height: 1;
+}
+
+.site-address {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: $col-light;
+}

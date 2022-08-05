@@ -42,6 +42,7 @@ export { default as AppHeader } from './organisms/app-header';
 export { default as Authentication } from './organisms/authentication';
 export { default as ContextMenu } from './organisms/context-menu';
 export { default as RegisterForm } from './organisms/register-form';
+export { default as SiteCard } from './organisms/site-card';
 export { default as TableFactory } from './organisms/table-factory';
 export { default as TopNavigation } from './organisms/top-navigation';
 export { default as UserMenu } from './organisms/user-menu';
