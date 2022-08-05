@@ -1,0 +1,51 @@
+import { BoxPreview } from "./index.tsx";
+
+<Meta
+  title="Molecule/Box preview"
+  component={BoxPreview}
+/>
+
+export const itemList = [
+  "Item 1",
+  "Item 2",
+  "Item 3",
+  "Item 4"
+]
+
+export const colorChoices = [
+  'orange',
+  'blue',
+  'turquoise',
+  'red',
+  'pink',
+  'indigo',
+  'purple',
+  'green',
+  'brown',
+  'hotpink'
+  ]
+
+# Box preview
+
+The Box preview Component
+
+<Canvas withSource="open">
+  <Story
+    name="Default"
+    args={{
+      boxNumber: 1,
+      location: "Kitchen",
+      itemNames: itemList,
+      itemCount: 33,
+      filled: 20,
+      sealed: false
+    }}
+  >{
+    (args) => <BoxPreview {...args} />
+  }
+  </Story>
+</Canvas>
+
+## Props
+
+<ArgsTable of={BoxPreview} />

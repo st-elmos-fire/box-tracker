@@ -1,0 +1,104 @@
+.box-preview {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 2fr 3fr 1fr;
+  background-color: $col-main-panel-bg;
+  border-radius: $border-radius-lg;
+  box-shadow: $drop-shadow;
+  width: 250px;
+  overflow: hidden;
+  aspect-ratio: 1;
+  &.sealed {
+    opacity: .8;
+    &::after {
+      content: "✅ SEALED";
+      display: block;
+      background-color: rgba(90, 255, 101, 0.628);
+      color: green;
+      font-size: 1.2rem;
+      font-weight: bold;
+      text-align: center;
+      padding: 1rem 4rem;
+      position: absolute;
+      top: 1.5rem;
+      right: -4rem;
+      transform: rotate(45deg);
+    }
+  }
+}
+
+.header {
+  padding: padding(1);
+}
+
+.box-number {
+  font-size: 4rem;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.box-location {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #000;
+}
+
+.box-items {
+  padding: 1rem;
+  li {
+    margin-bottom: margin(.5);
+  }
+}
+
+.footer {
+  height: 100%;
+  display: grid;
+  grid-template-rows: 10px 1fr;
+}
+
+.fill-bar {
+  height: 100%;
+  background-color: $col-grey-600;
+  border-top-right-radius: $border-radius;
+  transition: all 0.8s ease-in-out;
+}
+
+.box-items-count {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  font-size: 1.5rem;
+  font-weight: bold;
+  background-color: #000;
+  color: white;
+  padding-left: padding(1);
+}
+
+$colours: (
+orange: $col-orange,
+blue: $col-blue,
+turquoise: $col-turquoise,
+red: $col-red,
+pink: $col-pink,
+indigo: $col-indigo,
+purple: $col-purple,
+green: $col-green,
+brown: $col-brown,
+hotpink: $col-hotpink
+);
+
+@each $name, $colour in $colours {
+  .colour-choice-#{$name} {
+    .box-location {
+      color: #{$colour};
+    }
+    .box-items-count {
+      background-color: #{$colour};
+    }
+  }
+}
