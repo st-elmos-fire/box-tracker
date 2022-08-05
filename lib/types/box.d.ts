@@ -1,9 +1,11 @@
-import Location from './location';
+import { Site } from './site';
 export interface Box {
   uuid: string;
-  name: string;
-  source: Location;
-  destination: Location;
+  boxNumber: number;
+  roomID: string;
+  source: Site;
+  destination: Site;
+  currentLocation: Site;
   contents: string[] | [];
   createdAt: string;
   updatedAt: string;
