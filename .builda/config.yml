@@ -4,25 +4,25 @@ commands:
   atom:
     type: scaffold
     outputPath: ./components/atoms
-    use: 'foxys-own'
+    use: foxys-own
     substitute:
-      - string: 'prefix'
-        default: 'Atom'
-      - string: 'type'
-        default: 'Component'
+      - string: prefix
+        default: Atom
+      - string: type
+        default: Component
   molecule:
     type: scaffold
     outputPath: ./components/molecules
-    use: 'foxys-own'
+    use: foxys-own
     substitute:
-      - string: 'prefix'
-        default: 'Molecule'
-      - string: 'type'
-        default: 'Component'
+      - string: prefix
+        default: Molecule
+      - string: type
+        default: Component
   organism:
     type: scaffold
     outputPath: ./components/organisms
-    use: 'foxys-own'
+    use: foxys-own
     substitute:
       - string: prefix
         default: Organism
@@ -31,12 +31,12 @@ commands:
   input:
     type: scaffold
     outputPath: ./components/inputs
-    use: 'foxys-own'
+    use: foxys-own
     substitute:
-      - string: 'prefix'
-        default: 'Input'
-      - string: 'type'
-        default: 'Component'
+      - string: prefix
+        default: Input
+      - string: type
+        default: Component
 modules:
   scaffold:
-    foxys-own: 1.0.1
+    foxys-own: 1.0.2
