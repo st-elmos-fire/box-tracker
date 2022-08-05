@@ -18,6 +18,10 @@
   @include utils.button-secondary;
 }
 
+.button-tertiary {
+  @include utils.button-tertiary;
+}
+
 .button-create {
   @include utils.button-create;
 }

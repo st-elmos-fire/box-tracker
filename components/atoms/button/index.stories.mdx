@@ -19,9 +19,9 @@ import { Button } from './index.tsx';
   }}
 />
 
-# Button
+<Title type="alpha">Button</Title>
 
-The Button component allows a user to place a button on the page.
+<Description of={Button} />
 
 <Tip>
   It's also possible to turn a regular button element or link into a basic
@@ -37,6 +37,24 @@ The Button component allows a user to place a button on the page.
     args={{
       variant: 'primary',
       label: 'Primary'
+    }}
+  >
+    {(args) => <Button {...args} />}
+  </Story>
+  <Story
+    name="Secondary"
+    args={{
+      variant: 'secondary',
+      label: 'Secondary'
+    }}
+  >
+    {(args) => <Button {...args} />}
+  </Story>
+  <Story
+    name="Tertiary"
+    args={{
+      variant: 'tertiary',
+      label: 'Tertiary'
     }}
   >
     {(args) => <Button {...args} />}

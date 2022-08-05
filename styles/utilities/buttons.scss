@@ -1,5 +1,6 @@
 @use '../vars' as *;
 @use './link.scss' as *;
+@use "sass:color";
 
 @mixin disabled-button() {
   background-color: $col-action-disabled;
@@ -8,12 +9,11 @@
   pointer-events: none;
 }
 
-@mixin button() {
+@mixin button($bg-colour, $text-colour) {
   @include fs-button();
 
-  background-color: $col-background;
-  border-radius: $border-radius;
-  box-sizing: border-box;
+  background-color: $bg-colour;
+  border-radius: $border-radius-lg;
   cursor: pointer;
   display: inline-block;
   width: max-content;
@@ -23,86 +23,54 @@
   text-align: center;
   text-transform: uppercase;
   transition: all 0.25s cubic-bezier(0.165, 0.84, 0.44, 1);
+  border-bottom: 2px solid darken($bg-colour, 10%);
+  border-right: 2px solid darken($bg-colour, 10%);
+  border-left: 2px solid transparent;
+  border-top: 2px solid transparent;
+
+  color: $text-colour;
+
+  &:not([disabled]) {
+    &:hover {
+      filter: brightness(115%);
+    }
+
+    &:active,
+    &:focus {
+      border-color: darken($bg-colour, 20%);
+    }
+
+    &:hover,
+    &:active,
+    &:focus {
+      filter: drop-shadow(0 0 0.2rem rgba(255, 255, 255, 0.4)) drop-shadow(0 0 0.5rem rgba(0, 0, 0, 0.3));
+    }
+  }
 
   &:disabled {
     @include disabled-button();
+    border-color: transparent;
   }
 }
 
 @mixin button-primary {
-  @include button();
-
-  background-color: $col-primary;
-  color: $col-action-text;
-
-  &:not([disabled]) {
-    &:hover {
-      background-color: $col-action-hover;
-    }
-
-    &:active,
-    &:focus {
-      background-color: $col-action-focus-bg;
-    }
-  }
+  @include button($col-primary, $col-action-text);
 }
 
 @mixin button-secondary {
-  @include button();
+  @include button($col-secondary, $col-action-text);
+}
 
-  background-color: $col-secondary;
-  color: $col-action-text;
-
-  &:not([disabled]) {
-    &:hover {
-      background-color: $col-action-hover;
-    }
-
-    &:active,
-    &:focus {
-      background-color: $col-action-focus-bg;
-    }
-  }
+@mixin button-tertiary {
+  @include button($col-tertiary, $col-link);
 }
 
 @mixin button-create {
-  @include button();
-
-  background-color: $col-action-create;
-  color: $col-action-text;
-
-  &:not([disabled]) {
-    &:hover {
-      background-color: $col-action-create-hover;
-    }
-
-    &:active,
-    &:focus {
-      background-color: $col-action-create-focus-bg;
-    }
-  }
+  @include button($col-action-create, $col-action-text);
 }
 
 @mixin button-destroy {
-  @include button();
-
-  background-color: $col-action-destroy;
-  color: $col-action-text;
-
-  &:disabled {
-    @include disabled-button();
-  }
-
-  &:not([disabled]) {
-    &:hover {
-      background-color: $col-action-destroy-hover;
-    }
-
-    &:active,
-    &:focus {
-      background-color: $col-action-destroy-focus-bg;
-    }
-  }
+  @include button($col-action-destroy, $col-action-text);
 }
 
 @mixin button-circular {
