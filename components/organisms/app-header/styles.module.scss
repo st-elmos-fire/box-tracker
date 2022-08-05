@@ -1,8 +1,8 @@
 .app-header {
   display: grid;
   grid-template-columns: 2fr 1fr;
-  background: #4A00E0;  /* fallback for old browsers */
-  background: linear-gradient(-45deg, #4A00E0, #8E2DE2);
+  background: $col-primary;  /* fallback for old browsers */
+  background: linear-gradient(-48deg, darken($col-primary, 10%), $col-secondary);
   color: #fff;
   align-items: center;
   padding: padding(2) padding(3) padding(1.5) padding(3);
