@@ -1,6 +1,6 @@
 /* Backgrounds */
 $col-background: #fff;
-$col-main-panel-bg: #f9f9f9;
+$col-main-panel-bg: #E8E8E8;
 $col-tool-header-bg: #f0f0f0;
 
 /* Brand Colours */
@@ -23,7 +23,7 @@ $col-grey-800: #222;
 $col-grey-900: #111;
 
 /* Typography */
-$col-body-text: #0c0d0d;
+$col-body-text: #4F4F4F;
 $col-body-text-light: #4f595f;
 
 /* Statuses */
@@ -90,3 +90,15 @@ $col-statuses: (
   warning: $col-warning,
   info: $col-info
 );
+
+/* Room colour options */
+$col-orange: #c45901;
+$col-blue: #3f77bc;
+$col-turquoise: #4b9985;
+$col-red: #D64D4D;
+$col-pink: #b93eb5;
+$col-indigo: #4b0082;
+$col-purple: #6200EA;
+$col-green: #5a9e43;
+$col-brown: #8d5c33;
+$col-hotpink: #9f007a;

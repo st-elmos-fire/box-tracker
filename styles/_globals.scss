@@ -11,8 +11,8 @@
 }
 
 body {
-  @include fs-body-text();
-
+  font-family: Archivo, sans-serif;
+  font-size: $fs-body-text;
   background: $col-background;
   color: $col-body-text;
 
@@ -39,7 +39,6 @@ main {
   h4,
   h5,
   h6 {
-    font-family: NunitoBold, sans-serif;
     margin-bottom: margin(1);
   }
 
