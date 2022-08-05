@@ -50,7 +50,11 @@ interface Props extends React.ComponentProps<'div'> {
 /* Import Stylesheet */
 import styles from './styles.module.scss';
 
-/* Render component */
+/**
+ * The `BoxPreview` component is used to display a small preview of a box.
+ * It shows the box number, location, first 4 item names, total item count,
+ * and filled percentage.
+ */
 export const BoxPreview: React.FC<Props> = ({
   boxNumber,
   location,
