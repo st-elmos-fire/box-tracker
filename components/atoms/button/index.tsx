@@ -89,7 +89,9 @@ const presetIcon = (preset: PresetIcon) => {
   }
 };
 
-/* Render component */
+/**
+ * The Button component allows a user to place a button on the page.
+ */
 export const Button: React.FC<Props> = ({
   label = '',
   alignIcon,
