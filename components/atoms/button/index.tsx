@@ -1,8 +1,8 @@
 import React from 'react';
 import classNames from 'classnames';
 
-import { MdAutorenew, MdDelete, MdAdd, MdEdit, MdClose } from 'react-icons/md';
-import { Spinner } from 'components';
+// Import components
+import { Spinner, Icons } from 'components';
 
 /* Define available presets here */
 
@@ -75,15 +75,15 @@ const cx = classNames.bind(styles);
 const presetIcon = (preset: PresetIcon) => {
   switch (preset) {
     case 'refresh':
-      return <MdAutorenew />;
+      return <Icons.Refresh />;
     case 'delete':
-      return <MdDelete />;
+      return <Icons.Delete />;
     case 'add':
-      return <MdAdd />;
+      return <Icons.Add />;
     case 'edit':
-      return <MdEdit />;
+      return <Icons.Edit />;
     case 'close':
-      return <MdClose />;
+      return <Icons.Close />;
     default:
       return null;
   }

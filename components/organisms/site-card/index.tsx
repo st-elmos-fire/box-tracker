@@ -1,5 +1,8 @@
 import React from 'react';
 
+// Import components
+import { Icons } from 'components';
+
 // Types
 import { Box } from 'lib/types/box';
 interface Props extends React.ComponentProps<'div'> {
@@ -51,6 +54,9 @@ export const SiteCard: React.FC<Props> = ({
         </div>
         <div className={styles['site-actions']}>
           <Button variant="secondary" label="Manage" />
+          <Button variant="tertiary" label="Generate Labels" iconOnly>
+            <Icons.Tag />
+          </Button>
         </div>
       </header>
       <div className={styles['content']}>
