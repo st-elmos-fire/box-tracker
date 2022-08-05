@@ -42,6 +42,24 @@ The Button component allows a user to place a button on the page.
     {(args) => <Button {...args} />}
   </Story>
   <Story
+    name="Secondary"
+    args={{
+      variant: 'secondary',
+      label: 'Secondary'
+    }}
+  >
+    {(args) => <Button {...args} />}
+  </Story>
+  <Story
+    name="Tertiary"
+    args={{
+      variant: 'tertiary',
+      label: 'Tertiary'
+    }}
+  >
+    {(args) => <Button {...args} />}
+  </Story>
+  <Story
     name="Primary (disabled)"
     args={{
       variant: 'primary',

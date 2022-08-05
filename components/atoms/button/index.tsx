@@ -41,6 +41,7 @@ export interface Props extends React.ComponentProps<'button'> {
   variant?:
     | 'primary'
     | 'secondary'
+    | 'tertiary'
     | 'create'
     | 'destroy'
     | 'text'

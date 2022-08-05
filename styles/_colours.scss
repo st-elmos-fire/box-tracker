@@ -1,36 +1,37 @@
 /* Backgrounds */
-$col-background: #fff;
-$col-main-panel-bg: #E8E8E8;
-$col-tool-header-bg: #f0f0f0;
+$col-background: hsl(0, 0%, 100%);
+$col-main-panel-bg: hsl(0, 0%, 91%);
+$col-tool-header-bg: hsl(0, 0%, 94%);
 
 /* Brand Colours */
-$col-primary: #4A00E0;
-$col-secondary: #8E2DE2;
+$col-primary: hsl(260, 100%, 44%);
+$col-secondary: hsl(272, 76%, 53%);
+$col-tertiary: hsl(272, 100%, 90%);
 
 /* Dark and light base colours */
-$col-dark: #121212;
-$col-light: #fff;
+$col-dark: hsl(0, 0%, 7%);
+$col-light: hsl(0, 0%, 93%);
 
 /* Grey shades */
-$col-grey-100: #fafafa;
-$col-grey-200: #f5f5f5;
-$col-grey-300: #f0f0f0;
-$col-grey-400: #ddd;
-$col-grey-500: #ccc;
-$col-grey-600: #666;
-$col-grey-700: #333;
-$col-grey-800: #222;
-$col-grey-900: #111;
+$col-grey-100: hsl(0, 0%, 98%);
+$col-grey-200: hsl(0, 0%, 94%);
+$col-grey-300: hsl(0, 0%, 90%);
+$col-grey-400: hsl(0, 0%, 77%);
+$col-grey-500: hsl(0, 0%, 60%);
+$col-grey-600: hsl(0, 0%, 40%);
+$col-grey-700: hsl(0, 0%, 20%);
+$col-grey-800: hsl(0, 0%, 13%);
+$col-grey-900: hsl(0, 0%, 7%);
 
 /* Typography */
-$col-body-text: #4F4F4F;
-$col-body-text-light: #4f595f;
+$col-body-text: hsl(0, 0%, 31%);
+$col-body-text-light: hsl(203, 9%, 34%);
 
 /* Statuses */
-$col-warning: #ffc105;
-$col-success: #00703c;
-$col-danger: #d4341c;
-$col-info: #008db8;
+$col-warning: hsl(45, 100%, 51%);
+$col-success: hsl(152, 100%, 22%);
+$col-danger: hsl(8, 77%, 47%);
+$col-info: hsl(194, 100%, 36%);
 $col-error: $col-danger;
 
 /* Inputs */
@@ -38,23 +39,23 @@ $col-input-bg: $col-background;
 $col-input-focus-bg: lighten($col-warning, 47%);
 $col-input-border: $col-grey-500;
 $col-input-border-focus: $col-warning;
-$col-label-text: #7b6f6f;
+$col-label-text: hsl(0, 5%, 46%);
 $col-input-text: $col-body-text;
 $col-disabled-input-text: $col-label-text;
 
 /* Links */
 /* Style also applies to text buttons */
-$col-link: #0009a9;
+$col-link: hsl(260, 54%, 48%);
 $col-link-hover: lighten($col-link, 20%);
-$col-link-hover-bg: #d0eefc;
+$col-link-hover-bg: hsl(260, 70%, 70%);
 $col-link-focus-bg: $col-link-hover;
-$col-link-disabled: #7b6f6f;
+$col-link-disabled: hsl(0, 5%, 46%);
 
 /* Actions */
-$col-action: $col-primary;
+$col-action: $col-link;
 $col-action-destroy: $col-danger;
 $col-action-create: $col-success;
-$col-action-disabled: #999;
+$col-action-disabled: hsl(0, 0%, 60%);
 
 $col-action-hover: lighten($col-primary, 10%);
 $col-action-destroy-hover: lighten($col-secondary, 10%);
@@ -64,25 +65,25 @@ $col-action-focus-bg: lighten($col-primary, 20%);
 $col-action-destroy-focus-bg: lighten($col-secondary, 20%);
 $col-action-create-focus-bg: lighten($col-action-create, 20%);
 
-$col-action-text: #fff;
+$col-action-text: hsl(0, 0%, 100%);
 
 /* Shadows and borders */
 
-$col-shadow: #000;
-$col-border: #e0dedd;
-$col-border-dark: #707070;
+$col-shadow: hsl(0, 0%, 0%);
+$col-border: hsl(30, 3%, 87%);
+$col-border-dark: hsl(0, 0%, 44%);
 
 /* Chips */
 
 $col-chip-bg: $col-background;
-$col-chip-category-bg: #ead8d0;
+$col-chip-category-bg: hsl(18, 38%, 87%);
 
 /* Tables */
 
 $col-table-bg: $col-background;
 $col-table-header-bg: $col-primary;
 $col-table-header-text: $col-light;
-$col-table-stripe-bg: #f0f0f0;
+$col-table-stripe-bg: hsl(0, 0%, 94%);
 
 $col-statuses: (
   error: $col-error,
@@ -92,13 +93,13 @@ $col-statuses: (
 );
 
 /* Room colour options */
-$col-orange: #c45901;
-$col-blue: #3f77bc;
-$col-turquoise: #4b9985;
-$col-red: #D64D4D;
-$col-pink: #b93eb5;
-$col-indigo: #4b0082;
-$col-purple: #6200EA;
-$col-green: #5a9e43;
-$col-brown: #8d5c33;
-$col-hotpink: #9f007a;
+$col-orange: hsl(27, 99%, 39%);
+$col-blue: hsl(213, 50%, 49%);
+$col-turquoise: hsl(165, 34%, 45%);
+$col-red: hsl(0, 63%, 57%);
+$col-pink: hsl(302, 50%, 48%);
+$col-indigo: hsl(275, 100%, 25%);
+$col-purple: hsl(265, 100%, 46%);
+$col-green: hsl(105, 40%, 44%);
+$col-brown: hsl(27, 47%, 38%);
+$col-hotpink: hsl(314, 100%, 31%);
