@@ -13,7 +13,9 @@ extends React.ComponentProps<'div'> {
 /* Import Stylesheet */
 import styles from './styles.module.scss';
 
-/* Render component */
+/* 
+* The %SENTENCE_CASE% %TYPE%
+*/
 export const %PASCAL_CASE%: React.FC<Props> = ({
   text = 'No text provided',
   className,
