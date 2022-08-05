@@ -1,5 +1,5 @@
 {
-  "name": "whats-in-the-box",
+  "name": "box-tracker",
   "version": "2.0.0",
   "private": true,
   "author": {
@@ -19,7 +19,9 @@
     "postinstall": "husky install",
     "preflight": "run-p lint prettier-write",
     "pretty-quick": "pretty-quick",
-    "genreg": "node ./file-generators/registries.mjs"
+    "genreg": "node ./file-generators/registries.mjs",
+    "builda": "builda",
+    "postbuilda": "yarn genreg"
   },
   "dependencies": {
     "@fontsource/archivo": "^4.5.7",
