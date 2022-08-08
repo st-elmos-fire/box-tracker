@@ -1,0 +1,24 @@
+.add-new-box {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  place-items: center;
+  background-color: $col-main-panel-bg;
+  border-radius: $border-radius-lg;
+  border-bottom: 31px solid $col-grey-400;
+  box-shadow: $drop-shadow;
+  width: 250px;
+  overflow: hidden;
+  aspect-ratio: 1;
+  &:hover {
+    @include animations.wobble($amount: .5deg);
+    cursor: pointer;
+    filter: brightness(0.95);
+  }
+}
+
+.icon {
+  width: 50%;
+  fill: $col-grey-500;
+}

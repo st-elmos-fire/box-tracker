@@ -1,0 +1,23 @@
+import { AddNewBox } from "./index.tsx";
+
+<Meta
+  title="Atom/Add new box"
+  component={AddNewBox}
+  args={{
+    onClick: () => {
+      alert('Button clicked');
+    }
+  }}
+/>
+
+<Title type="ALPHA">Add new box</Title>
+
+<Description of={AddNewBox} />
+
+<Canvas withSource="open">
+  <Story name="Default">{(args) => <AddNewBox {...args} />}</Story>
+</Canvas>
+
+## Props
+
+<ArgsTable of={AddNewBox} />

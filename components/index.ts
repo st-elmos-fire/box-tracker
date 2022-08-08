@@ -14,6 +14,7 @@ e.g. with registering
   import { fetcher, poster } from 'lib/helpers'
 */
 
+export { default as AddNewBox } from './atoms/add-new-box';
 export { default as Avatar } from './atoms/avatar';
 export { default as Button } from './atoms/button';
 export { default as Icons } from './atoms/icons';

@@ -26,6 +26,11 @@
       transform: rotate(45deg);
     }
   }
+  &:hover {
+    @include animations.wobble($amount: .5deg);
+    cursor: pointer;
+    filter: brightness(0.95);
+  }
 }
 
 .header {

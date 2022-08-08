@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 
 /* Components */
-import { BoxPreview } from 'components';
+import { BoxPreview, AddNewBox } from 'components';
 
 /* Types */
 import { Box } from 'lib/types/box';
 import { BoxItem } from 'lib/types/box-item';
-interface Props extends React.ComponentProps<'div'> {
+interface Props extends React.ComponentProps<'ul'> {
   /**
    * The boxes in the site
    */
@@ -31,7 +31,7 @@ export const BoxGrid: React.FC<Props> = ({
   }, [boxes]);
 
   return (
-    <div className={`${styles['box-grid']} ${className}`} {...props}>
+    <ul className={`${styles['box-grid']} ${className}`} {...props}>
       {boxList.map((box) => {
         const contents = box.contents as BoxItem[];
         const itemCount = contents.reduce(
@@ -47,9 +47,16 @@ export const BoxGrid: React.FC<Props> = ({
           percentFilled: box.percentFilled || 0,
           sealed: box.sealed
         };
-        return <BoxPreview key={box.uuid} {...boxData} />;
+        return (
+          <li key={box.uuid}>
+            <BoxPreview {...boxData} />
+          </li>
+        );
       })}
-    </div>
+      <li>
+        <AddNewBox />
+      </li>
+    </ul>
   );
 };
 
