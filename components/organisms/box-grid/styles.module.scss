@@ -1,0 +1,7 @@
+.box-grid {
+  padding: 1rem;
+  background-color: #fff;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1rem;
+}

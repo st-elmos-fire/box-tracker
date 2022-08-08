@@ -1,8 +1,10 @@
-import { Site } from './site';
+import ColourChoices from './colour-choices';
+
 export interface Room {
   uuid: string;
   name: string;
-  location: Site;
+  currentLocationID: string;
+  colour: ColourChoices;
   createdAt: string;
   updatedAt: string;
 }

@@ -1,0 +1,24 @@
+import { BoxGrid } from "./index.tsx";
+
+import boxes from 'lib/mocks/boxes';
+
+<Meta
+  title="Organism/Box grid"
+  component={BoxGrid}
+  args={{
+    boxes
+  }}
+/>
+
+
+<Title type="ALPHA">Box grid</Title>
+
+<Description of={BoxGrid} />
+
+<Canvas withSource="open">
+  <Story name="Default">{(args) => <BoxGrid {...args} />}</Story>
+</Canvas>
+
+## Props
+
+<ArgsTable of={BoxGrid} />

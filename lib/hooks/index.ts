@@ -17,3 +17,4 @@ e.g. with registering
 export { default as useDebounceEffect } from './use-debounce-effect';
 export { default as useSize } from './use-size';
 export { default as useInput } from './useInput';
+export { default as usePrevious } from './use-previous';

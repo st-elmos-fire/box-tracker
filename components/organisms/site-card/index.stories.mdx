@@ -1,5 +1,7 @@
 import { SiteCard } from "./index.tsx";
 
+import boxes from 'lib/mocks/boxes'
+
 <Meta
   title="Organism/Site card"
   component={SiteCard}
@@ -16,7 +18,7 @@ import { SiteCard } from "./index.tsx";
       name: "Meteor Street",
       address: "23 Meteor Street, Tuffnell Park, London, N7 90PW",
       type: "source",
-      boxes: []
+      boxes
     }}
   >
     {(args) => <SiteCard {...args} />}
