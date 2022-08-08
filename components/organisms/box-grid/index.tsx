@@ -30,8 +30,6 @@ export const BoxGrid: React.FC<Props> = ({
     setBoxList(boxes);
   }, [boxes]);
 
-  // TODO: The sort and filter logic is not working properly. It could be in the `SiteCardFilter` component.
-
   return (
     <div className={`${styles['box-grid']} ${className}`} {...props}>
       {boxList.map((box) => {

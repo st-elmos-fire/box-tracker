@@ -42,7 +42,7 @@ export const SiteCardFilter: React.FC<Props> = ({
   onSortChange,
   onViewChange,
   filterValue = '',
-  sortValue = 'Box Number',
+  sortValue = 'BoxNumber',
   viewValue = 'Boxes',
   className,
   ...props

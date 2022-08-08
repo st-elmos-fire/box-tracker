@@ -6,9 +6,6 @@ import { Icons, BoxGrid, SiteCardFilter } from 'components';
 // Helpers
 import { getTrueItemCount } from 'lib/helpers';
 
-// Hooks
-import { usePrevious } from 'lib/hooks';
-
 // Types
 import { Box } from 'lib/types/box';
 interface Props extends React.ComponentProps<'div'> {
@@ -49,84 +46,66 @@ export const SiteCard: React.FC<Props> = ({
   const [filter, setFilter] = useState('');
   const [sort, setSort] = useState('Box Number');
   const [view, setView] = useState('Boxes');
-  const prevFilter = usePrevious(filter);
-  const prevSort = usePrevious(sort);
-  const prevView = usePrevious(view);
-
-  const [filteredBoxes, setFilteredBoxes] = useState(boxes);
-  const [sortedBoxes, setSortedBoxes] = useState(boxes);
-  const [boxList, setBoxList] = useState(boxes);
+  const [boxList, setBoxList] = useState<Box[]>(boxes);
 
   useEffect(() => {
-    if (filter) {
-      const filteredBoxes = boxes.filter((box) => {
-        // Filter by box number
-        if (box.boxNumber.toString() === filter) {
-          return true;
-        }
-        // Filter by room
-        if (box.room.name.toLowerCase().includes(filter.toLowerCase())) {
-          return true;
-        }
-        // Filter by contents
-        if (
-          box.contents.some((item) =>
-            item.name.toLowerCase().includes(filter.toLowerCase())
-          )
-        ) {
-          return true;
-        }
-        return false;
-      });
-      setFilteredBoxes(filteredBoxes);
+    setBoxList(boxes);
+  }, [boxes]);
+
+  const handleFilterChange = (value: string) => {
+    setFilter(value);
+    if (value === '') {
+      setBoxList(boxes);
     } else {
-      setFilteredBoxes(boxes);
-    }
-  }, [filter, boxes]);
-
-  useEffect(() => {
-    if (sort === 'boxNumber') {
-      console.log('sort by box number');
-      return setSortedBoxes(
-        filteredBoxes.sort((a, b) => a.boxNumber - b.boxNumber)
+      // Filter by box number
+      setBoxList(
+        boxList.filter((box) => box.boxNumber.toString().includes(value))
       );
-    }
-    if (sort === 'room') {
-      console.log('sort by room');
-      return setSortedBoxes(
-        filteredBoxes.sort((a, b) => a.room.name.localeCompare(b.room.name))
+      // Filter by room
+      setBoxList(
+        boxList.filter((box) =>
+          box.room.name.toLocaleLowerCase().includes(value.toLocaleLowerCase())
+        )
       );
-    }
-    if (sort === 'itemCount') {
-      console.log('sort by item count');
-      return setSortedBoxes(
-        filteredBoxes.sort(
-          (a, b) => getTrueItemCount(a.contents) - getTrueItemCount(b.contents)
+      // Filter by item name
+      setBoxList(
+        boxList.filter((box) =>
+          box.contents.some((item) =>
+            item.name.toLocaleLowerCase().includes(value.toLocaleLowerCase())
+          )
         )
       );
     }
-    if (sort === 'percentFilled') {
-      console.log('sort by percent filled');
-      return setSortedBoxes(
-        filteredBoxes.sort((a, b) => {
-          const aPercent = a.percentFilled || 0;
-          const bPercent = b.percentFilled || 0;
-          return aPercent - bPercent;
-        })
-      );
-    }
-    return setSortedBoxes(filteredBoxes);
-  }, [sort, filteredBoxes]);
+  };
 
-  useEffect(() => {
-    if (prevSort !== sort) {
-      setBoxList(sortedBoxes);
-    }
-    if (prevFilter !== filter) {
-      setBoxList(filteredBoxes);
-    }
-  }),
-    [sort, filter, prevFilter, prevSort];
+  const handleSortChange = (value: string) => {
+    setSort(value);
+    setBoxList(
+      boxList.sort((a, b) => {
+        if (value === 'boxNumber') {
+          return a.boxNumber - b.boxNumber;
+        } else if (value === 'room') {
+          const nameA = a.room.name.toLocaleLowerCase();
+          const nameB = b.room.name.toLocaleLowerCase();
+          if (nameA < nameB) {
+            return -1;
+          }
+          if (nameA > nameB) {
+            return 1;
+          }
+          return 0;
+        } else if (value === 'itemCount') {
+          return getTrueItemCount(a.contents) - getTrueItemCount(b.contents);
+        } else if (value === 'percentFilled') {
+          const percentA = a.percentFilled || 0;
+          const percentB = b.percentFilled || 0;
+          return percentA - percentB;
+        } else {
+          return 0;
+        }
+      })
+    );
+  };
 
   return (
     <section
@@ -153,8 +132,8 @@ export const SiteCard: React.FC<Props> = ({
       </header>
       <div className={styles['content']}>
         <SiteCardFilter
-          onFilterChange={setFilter}
-          onSortChange={setSort}
+          onFilterChange={handleFilterChange}
+          onSortChange={handleSortChange}
           onViewChange={setView}
           filterValue={filter}
           sortValue={sort}
