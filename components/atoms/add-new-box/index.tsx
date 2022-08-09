@@ -13,7 +13,11 @@ export const AddNewBox: React.FC<React.ComponentProps<'button'>> = ({
   ...props
 }: React.ComponentProps<'button'>) => {
   return (
-    <button className={`${styles['add-new-box']}`} {...props}>
+    <button
+      className={`${styles['add-new-box']}`}
+      {...props}
+      title="Add a new box"
+    >
       <Icon.Add className={styles['icon']} />
     </button>
   );

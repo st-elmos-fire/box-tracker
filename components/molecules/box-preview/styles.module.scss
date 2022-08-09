@@ -1,3 +1,5 @@
+$col-sealed: hsl(98, 100%, 28%);
+
 .box-preview {
   position: relative;
   display: grid;
@@ -10,27 +12,55 @@
   overflow: hidden;
   aspect-ratio: 1;
   &.sealed {
-    opacity: .8;
-    &::after {
-      content: "✅ SEALED";
-      display: block;
-      background-color: rgba(90, 255, 101, 0.628);
-      color: green;
-      font-size: 1.2rem;
-      font-weight: bold;
-      text-align: center;
-      padding: 1rem 4rem;
-      position: absolute;
-      top: 1.5rem;
-      right: -4rem;
-      transform: rotate(45deg);
-    }
+    background-color: rgba($col-sealed, 0.2);
   }
-  &:hover {
-    @include animations.wobble($amount: .5deg);
+  &.selected {
+    filter: brightness(0.9) saturate(1.5);
+    border: 2px solid $col-grey-500;
+  }
+  &:not(.dragging):hover {
+    @include animations.wobble($amount: .25deg);
     cursor: pointer;
     filter: brightness(0.95);
   }
+  &.droppable:hover {
+    cursor: move;
+  }
+  &.not-droppable:hover {
+    cursor: not-allowed;
+  }
+  &.dragging {
+    filter: saturate(.2);
+    box-shadow: inset 0 0 1rem $col-grey-500;
+    border: 2px dashed $col-grey-500;
+  }
+}
+
+.shippable-banner, .selected-banner {
+  display: block;
+  color: #fff;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  font-weight: bold;
+  text-align: center;
+  padding: .3rem 2rem;
+  margin-top: -1rem;
+  margin-left: -1rem;
+  margin-right: -1rem;
+  width: 110%;
+}
+
+.shippable-banner {
+  background-color: $col-sealed;
+}
+
+.selected-banner {
+  background-color: $col-grey-500;
+}
+
+.drag-ghost {
+  filter: drop-shadow(1rem 1rem 1rem $col-grey-400);
+  transform: scale(.8);
 }
 
 .header {
@@ -103,6 +133,13 @@ hotpink: $col-hotpink
       color: #{$colour};
     }
     .box-items-count {
+      background-color: #{$colour};
+    }
+    &.selected {
+      border: 2px solid #{$colour};
+      background-color: rgba($colour, 0.2);
+    }
+    .selected-banner {
       background-color: #{$colour};
     }
   }

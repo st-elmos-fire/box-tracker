@@ -3,6 +3,14 @@ import { BoxPreview } from "./index.tsx";
 <Meta
   title="Molecule/Box preview"
   component={BoxPreview}
+  args={{
+      boxID: "123",
+      boxNumber: 1,
+      room,
+      items: itemList,
+      itemCount: 33,
+      percentFilled: 20
+    }}
 />
 
 export const itemList = [
@@ -31,15 +39,49 @@ export const room = {
 <Description of={BoxPreview} />
 
 <Canvas withSource="open">
+  <Story name="Default">
+    {
+      (args) => <BoxPreview {...args} />
+    }
+  </Story>
+</Canvas>
+
+When a box is sealed, a 'sealed' banner is displayed. When a box is sealed, the box becomes draggable and can be moved to another site.
+
+<Canvas withSource="open">
   <Story
-    name="Default"
+    name="Sealed"
     args={{
-      boxNumber: 1,
-      room,
-      items: itemList,
-      itemCount: 33,
-      percentFilled: 20,
-      sealed: false
+      sealed: true
+    }}
+  >{
+    (args) => <BoxPreview {...args} />
+  }
+  </Story>
+</Canvas>
+
+This shows a box in a 'selected' state. Selected boxes can be moved to another site and can be dragged en masse.
+
+<Canvas withSource="open">
+  <Story
+    name="Selected"
+    args={{
+      sealed: true,
+      selected: true
+    }}
+  >{
+    (args) => <BoxPreview {...args} />
+  }
+  </Story>
+</Canvas>
+
+This box is draggable. It can be moved to another site.
+
+<Canvas withSource="open">
+  <Story
+    name="Draggable"
+    args={{
+      draggable: true
     }}
   >{
     (args) => <BoxPreview {...args} />

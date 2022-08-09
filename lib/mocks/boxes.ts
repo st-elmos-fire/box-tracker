@@ -57,7 +57,7 @@ export const boxes = [
     destinationID: '33839450-cdeb-479c-b733-71bfbb828f97',
     currentLocationID: '898fd8d4-ee39-4ad3-b4a3-994f6b593fa3',
     percentFilled: 11,
-    sealed: false,
+    sealed: true,
     contents: [
       {
         uuid: '3',
@@ -176,7 +176,7 @@ export const boxes = [
     destinationID: '33839450-cdeb-479c-b733-71bfbb828f97',
     currentLocationID: '898fd8d4-ee39-4ad3-b4a3-994f6b593fa3',
     percentFilled: 0,
-    sealed: false,
+    sealed: true,
     contents: [
       {
         uuid: '3',

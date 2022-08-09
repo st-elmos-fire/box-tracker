@@ -1,4 +1,8 @@
+import { DndProvider } from 'react-dnd'
+import { HTML5Backend } from 'react-dnd-html5-backend'
+
 import { BoxGrid } from "./index.tsx";
+import { SiteDropTarget } from 'components'
 
 import boxes from 'lib/mocks/boxes';
 
@@ -10,13 +14,25 @@ import boxes from 'lib/mocks/boxes';
   }}
 />
 
+export const returnBoxes = (boxids) => alert('Boxes: ' + boxids.join(', '))
 
 <Title type="ALPHA">Box grid</Title>
 
 <Description of={BoxGrid} />
 
+<Tip type="tip">
+  The cards which say 'Ready for transport' are draggable. Try dragging them into the target box.
+</Tip>
+
 <Canvas withSource="open">
-  <Story name="Default">{(args) => <BoxGrid {...args} />}</Story>
+  <Story name="Default">{
+    (args) => {
+      return <DndProvider backend={HTML5Backend}><div>
+        <BoxGrid {...args} />
+        <SiteDropTarget droppedBoxes={returnBoxes}>Drag items here</SiteDropTarget>
+      </div></DndProvider>
+    }}
+  </Story>
 </Canvas>
 
 ## Props

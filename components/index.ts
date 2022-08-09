@@ -38,6 +38,7 @@ export { default as Card } from './molecules/card';
 export { default as Grid } from './molecules/grid';
 export { default as Modal } from './molecules/modal';
 export { default as SiteCardFilter } from './molecules/site-card-filter';
+export { default as SiteDropTarget } from './molecules/site-drop-target';
 export { default as Table } from './molecules/table';
 export { default as AppFooter } from './organisms/app-footer';
 export { default as AppHeader } from './organisms/app-header';

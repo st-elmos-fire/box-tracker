@@ -45,7 +45,10 @@ module.exports = {
       'font-src': cspString,
       'connect-src': connectSrc,
       'frame-src': cspString,
-      'media-src': cspString
+      'media-src': cspString,
+      'frame-ancestors': `'none'`,
+      'base-uri': `'none'`,
+      'form-action': `'none'`
     }
 
     return [{

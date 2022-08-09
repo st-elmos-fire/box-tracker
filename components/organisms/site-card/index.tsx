@@ -47,6 +47,7 @@ export const SiteCard: React.FC<Props> = ({
   const [sort, setSort] = useState('Box Number');
   const [view, setView] = useState('Boxes');
   const [boxList, setBoxList] = useState<Box[]>(boxes);
+  const [selectMode, setSelectMode] = useState(false);
 
   useEffect(() => {
     setBoxList(boxes);
@@ -107,6 +108,22 @@ export const SiteCard: React.FC<Props> = ({
     );
   };
 
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Shift') {
+      setSelectMode(true);
+    }
+  });
+
+  window.addEventListener('keyup', (e) => {
+    if (e.key === 'Shift') {
+      setSelectMode(false);
+    }
+  });
+
+  const handleSelectModeChange = (value: boolean) => {
+    setSelectMode(value);
+  };
+
   return (
     <section
       className={`${styles['site-card']} ${
@@ -135,11 +152,13 @@ export const SiteCard: React.FC<Props> = ({
           onFilterChange={handleFilterChange}
           onSortChange={handleSortChange}
           onViewChange={setView}
+          onSelectModeChange={handleSelectModeChange}
           filterValue={filter}
           sortValue={sort}
           viewValue={view}
+          selectModeEnabled={selectMode}
         />
-        <BoxGrid boxes={boxList} />
+        <BoxGrid boxes={boxList} selectModeEnabled={selectMode} />
       </div>
     </section>
   );

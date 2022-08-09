@@ -5,7 +5,7 @@
   cursor: pointer;
   display: inline-flex;
   gap: $gutters;
-  margin: margin(0.6) margin(2) margin(0.6) 0;
+
   position: relative;
   -webkit-tap-highlight-color: transparent;
   vertical-align: middle;
@@ -20,13 +20,11 @@
 
   appearance: none;
   aspect-ratio: 1/1;
-  border: 1px solid $col-border;
-  border-radius: $border-radius;
+
   cursor: inherit;
   display: grid;
-  height: 25px;
-  padding: padding(0.5);
-  place-items: center;
+
+
   width: auto;
 
   &::before {

@@ -1,0 +1,60 @@
+import { DndProvider } from 'react-dnd'
+import { HTML5Backend } from 'react-dnd-html5-backend'
+
+
+import { SiteDropTarget } from "./index.tsx";
+import {BoxPreview} from "components"
+
+<Meta
+  title="Molecule/Site drop target"
+  component={SiteDropTarget}
+  args={{
+    boxID: "box-1",
+  boxNumber: 1,
+  room: {
+    name: "Kitchen",
+    colour: "blue"
+  },
+  items: [{
+    name: "Item 1"
+  }],
+  itemCount: 1,
+  percentFilled: 2,
+  sealed: true
+  }}
+/>
+
+<Title type="ALPHA">Site drop target</Title>
+
+<Description of={SiteDropTarget} />
+
+
+## Box is movable
+This box is marked 'ready for transport' and can be dragged to the drop target. Dropping this box on the target will return that boxes ID.
+<Canvas withSource="open">
+  <Story name="Default">{
+    (args) => {
+      const returnBoxes = (boxids) => alert('Boxes: ' + boxids.join(', '))
+      return <DndProvider backend={HTML5Backend}><div style={{padding: '1rem', display: 'grid',gridTemplateColumns: '1fr 3fr', gap: '1rem'}}>
+        <BoxPreview {...args} />
+        <SiteDropTarget droppedBoxes={returnBoxes} />
+      </div></DndProvider>
+    }}</Story>
+</Canvas>
+
+## The box is not movable
+This box is still incomplete and cannot be dragged to the drop target. Dragging this box on the target will return nothing.
+<Canvas withSource="open">
+  <Story name="NoDrop">{
+    (args) => {
+      const returnBoxes = (boxids) => alert('Boxes: ' + boxids.join(', '))
+      return <DndProvider backend={HTML5Backend}><div style={{padding: '1rem', display: 'grid',gridTemplateColumns: '1fr 3fr', gap: '1rem'}}>
+        <BoxPreview {...args} sealed={false}/>
+        <SiteDropTarget droppedBoxes={returnBoxes} />
+      </div></DndProvider>
+    }}</Story>
+</Canvas>
+
+## Props
+
+<ArgsTable of={SiteDropTarget} />

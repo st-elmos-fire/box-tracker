@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 /* Components */
 import { InputFactory } from 'components';
@@ -18,6 +18,10 @@ interface Props extends React.ComponentProps<'div'> {
    */
   onViewChange: (value: string) => void;
   /**
+   * The onChange callback for the selectMode toggle input
+   */
+  onSelectModeChange: (value: boolean) => void;
+  /**
    * Initial value for the filter input
    */
   filterValue?: string;
@@ -29,6 +33,10 @@ interface Props extends React.ComponentProps<'div'> {
    * Initial value for the view input
    */
   viewValue?: string;
+  /**
+   * Initial value for the selectMode toggle input
+   */
+  selectModeEnabled?: boolean;
 }
 
 /*  Stylesheet */
@@ -41,15 +49,22 @@ export const SiteCardFilter: React.FC<Props> = ({
   onFilterChange,
   onSortChange,
   onViewChange,
+  onSelectModeChange,
   filterValue = '',
   sortValue = 'BoxNumber',
   viewValue = 'Boxes',
+  selectModeEnabled = false,
   className,
   ...props
 }: Props) => {
   const [filter, setFilter] = useState(filterValue);
   const [sort, setSort] = useState(sortValue);
   const [view, setView] = useState(viewValue);
+  const [selectMode, setSelectMode] = useState(selectModeEnabled);
+
+  useEffect(() => {
+    setSelectMode(selectModeEnabled);
+  }, [selectModeEnabled]);
 
   const handleFilterChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
@@ -69,18 +84,31 @@ export const SiteCardFilter: React.FC<Props> = ({
     onViewChange(value);
   };
 
+  const handleModeChange = () => {
+    setSelectMode(!selectMode);
+    onSelectModeChange(!selectMode);
+  };
+
   return (
     <div className={`${styles['site-card-filter']} ${className}`} {...props}>
-      <InputFactory
-        type="select"
-        labelText="View"
-        options={[{ label: 'Boxes', value: 'boxes' }]}
-        className={styles['select-view']}
-        value={view}
-        onChange={handleViewChange}
-      />
+      <div className={styles['left']}>
+        <InputFactory
+          type="select"
+          labelText="View"
+          options={[{ label: 'Boxes', value: 'boxes' }]}
+          value={view}
+          onChange={handleViewChange}
+        />
+        <InputFactory
+          type="checkbox"
+          labelText="Select multiple"
+          checked={selectMode}
+          onChange={handleModeChange}
+          title="You can also use the shift key to select multiple boxes"
+        />
+      </div>
 
-      <div className={styles['refine-results']}>
+      <div className={styles['right']}>
         <InputFactory
           type="text"
           placeholder="Start typing..."

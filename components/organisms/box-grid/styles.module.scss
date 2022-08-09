@@ -4,4 +4,12 @@
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 1rem;
+  &.select-mode {
+    .box-preview {
+      @include animations.wobble($amount: .25deg);
+    }
+  }
+  .box-preview:hover {
+    cursor: move;
+  }
 }

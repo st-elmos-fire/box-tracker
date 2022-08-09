@@ -45,5 +45,5 @@
     }
   }
 
-  animation: $loop jiggle $duration ease-in-out;
+  animation: jiggle $duration $loop;
 }

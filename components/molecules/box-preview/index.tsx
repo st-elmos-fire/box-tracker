@@ -1,9 +1,14 @@
+import React, { useState } from 'react';
+import { useDrag } from 'react-dnd';
+
+/* Types */
 import { BoxItem } from 'lib/types/box-item';
 import { Room } from 'lib/types/room';
-import React from 'react';
-
-/* Import Types */
 interface Props extends React.ComponentProps<'div'> {
+  /**
+   * The boxes uuid
+   */
+  boxID: string;
   /**
    * The box number
    */
@@ -29,6 +34,10 @@ interface Props extends React.ComponentProps<'div'> {
    * @default false
    */
   sealed?: boolean;
+  /**
+   * The boxes selected status
+   */
+  selected?: boolean;
 }
 
 /* Import Stylesheet */
@@ -40,31 +49,58 @@ import styles from './styles.module.scss';
  * and filled percentage.
  */
 export const BoxPreview: React.FC<Props> = ({
+  boxID,
   boxNumber,
   room,
   items,
   itemCount,
   percentFilled,
   sealed = false,
+  selected = false,
   className,
   ...props
-}: Props) => {
+}) => {
   const remainingItems =
     itemCount -
       items
         .map((item) => item.quantity || 1)
         .reduce((acc, curr) => acc + curr, 0) || 0;
+
+  const [{ isDragging, isDroppabble }, dragRef] = useDrag({
+    type: 'BOX',
+    item: {
+      id: boxID,
+      status: sealed
+    },
+    collect: (monitor) => ({
+      isDragging: !!monitor.isDragging(),
+      isDroppabble: sealed
+    })
+  });
+
   return (
     <section
       className={`
         ${styles['box-preview']}
         ${sealed && styles['sealed']}
+        ${selected && styles['selected']}
+        ${isDragging && styles['dragging']}
+        ${isDroppabble ? styles['droppable'] : styles['not-droppable']}
         ${styles[`colour-choice-${room.colour}`]}
         ${className}
         `}
+      ref={dragRef}
       {...props}
     >
       <header className={styles['header']}>
+        {sealed && !selected && (
+          <span className={styles['shippable-banner']}>
+            Ready for transport
+          </span>
+        )}
+        {selected && (
+          <span className={styles['selected-banner']}>Selected for move</span>
+        )}
         <h2 className={styles['box-number']}>Box #{boxNumber}</h2>
         <h3 className={styles['box-location']}>{room.name}</h3>
       </header>
@@ -89,6 +125,8 @@ export const BoxPreview: React.FC<Props> = ({
     </section>
   );
 };
+
+BoxPreview.displayName = 'BoxPreview';
 
 export default BoxPreview;
 export type { Props };

@@ -5,11 +5,14 @@
   gap: spacing(3);
 }
 
-.select-view {
+.left{
   justify-self: start;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: spacing(2);
 }
 
-.refine-results {
+.right {
   justify-self: end;
   display: grid;
   grid-template-columns: 1fr 1fr;
