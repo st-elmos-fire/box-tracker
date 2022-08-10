@@ -13,7 +13,7 @@ module.exports = {
     storyStoreV7: !global.navigator?.userAgent?.match?.('jsdom'),
     interactionsDebugger: true
   },
-  stories: ['../components/**/*.stories.mdx'],
+  stories: ['../components/**/*.stories.mdx', '../pages/**/*.stories.mdx'],
   addons: ['@storybook/addon-essentials'],
   staticDirs: [
     { from: '../public', to: '/' },

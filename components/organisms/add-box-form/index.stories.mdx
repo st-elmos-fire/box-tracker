@@ -1,0 +1,36 @@
+import { AddBoxForm } from "./index.tsx";
+
+import rooms from 'lib/mocks/rooms'
+import boxes from 'lib/mocks/boxes'
+
+<Meta
+  title="Organism/Add box form"
+  component={AddBoxForm}
+  args={{
+    rooms,
+    boxAutoData: {
+      boxNumber: boxes.length + 1,
+      currentLocationID: 1,
+      sourceID: 1,
+      destinationID: 2,
+      creatorID: 1
+    }
+  }}
+/>
+
+<Title type="ALPHA">Add box form</Title>
+
+<Description of={AddBoxForm} />
+
+<Canvas withSource="open">
+  <Story name="Default">{
+    (args) => {
+      const onAddBox = (data) => {console.log(data)}
+      return <AddBoxForm {...args} onAddBox={onAddBox}/>
+    }
+  }</Story>
+</Canvas>
+
+## Props
+
+<ArgsTable of={AddBoxForm} />

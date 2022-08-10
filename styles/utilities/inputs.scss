@@ -38,10 +38,6 @@
     border-color: $col-input-border-focus;
     background-color: $col-input-focus-bg;
   }
-
-  &::placeholder {
-    color: transparent;
-  }
 }
 
 @mixin base-input-label() {

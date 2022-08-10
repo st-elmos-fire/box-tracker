@@ -28,6 +28,15 @@ commands:
         default: Organism
       - string: type
         default: Component
+  page:
+    type: scaffold
+    outputPath: ./pages
+    use: foxys-own
+    substitute:
+      - string: prefix
+        default: Page
+      - string: type
+        default: Page
   input:
     type: scaffold
     outputPath: ./components/inputs

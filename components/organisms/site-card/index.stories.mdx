@@ -1,3 +1,6 @@
+import { DndProvider } from 'react-dnd'
+import { HTML5Backend } from 'react-dnd-html5-backend'
+
 import { SiteCard } from "./index.tsx";
 
 import boxes from 'lib/mocks/boxes'
@@ -21,7 +24,7 @@ import boxes from 'lib/mocks/boxes'
       boxes
     }}
   >
-    {(args) => <SiteCard {...args} />}
+    {(args) => <DndProvider backend={HTML5Backend}><SiteCard {...args} /></DndProvider>}
   </Story>
 </Canvas>
 

@@ -2,10 +2,9 @@
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: max-content 1fr;
-  gap: spacing(1);
   background-color: $col-alt-panel-bg;
   border-radius: $border-radius-lg;
-  width: max-content;
+  width: stretch;
 }
 
 .header {

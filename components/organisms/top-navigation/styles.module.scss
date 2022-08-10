@@ -1,3 +1,9 @@
+.top-nav {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: spacing(2);
+  align-items: center;
+}
 .nav-list {
   display: flex;
   flex-direction: row;

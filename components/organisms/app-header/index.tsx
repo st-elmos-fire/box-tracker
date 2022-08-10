@@ -54,7 +54,7 @@ export const AppHeader: React.FC<Props> = ({
     </div>
     <div className={styles['right-col']}>
       <UserMenu user={user} />
-      <TopNavigation links={links} />
+      <TopNavigation links={links} isLoggedIn={!!user} />
     </div>
   </header>
 );

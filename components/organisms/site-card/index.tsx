@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 // Components
-import { Icons, BoxGrid, SiteCardFilter } from 'components';
+import { Icons, BoxGrid, SiteCardActionBar } from 'components';
 
 // Helpers
 import { getTrueItemCount } from 'lib/helpers';
@@ -18,6 +18,10 @@ interface Props extends React.ComponentProps<'div'> {
    */
   address: string;
   /**
+   * The rooms in the site
+   */
+  rooms: Room[];
+  /**
    * The site type
    * @default 'source'
    */
@@ -31,6 +35,7 @@ interface Props extends React.ComponentProps<'div'> {
 /* Import Stylesheet */
 import styles from './styles.module.scss';
 import Button from 'components/atoms/button';
+import { Room } from 'lib/types/room';
 
 /*
  * The Site card Component
@@ -39,15 +44,17 @@ export const SiteCard: React.FC<Props> = ({
   name,
   address,
   type = 'source',
+  rooms = [],
   boxes,
   className,
   ...props
 }: Props) => {
   const [filter, setFilter] = useState('');
-  const [sort, setSort] = useState('Box Number');
-  const [view, setView] = useState('Boxes');
+  const [sort, setSort] = useState('');
+  const [view, setView] = useState('boxes');
   const [boxList, setBoxList] = useState<Box[]>(boxes);
   const [selectMode, setSelectMode] = useState(false);
+  const [selectedBoxes, setSelectedBoxes] = useState<Box[]>([]);
 
   useEffect(() => {
     setBoxList(boxes);
@@ -55,28 +62,18 @@ export const SiteCard: React.FC<Props> = ({
 
   const handleFilterChange = (value: string) => {
     setFilter(value);
-    if (value === '') {
-      setBoxList(boxes);
-    } else {
-      // Filter by box number
-      setBoxList(
-        boxList.filter((box) => box.boxNumber.toString().includes(value))
-      );
-      // Filter by room
-      setBoxList(
-        boxList.filter((box) =>
-          box.room.name.toLocaleLowerCase().includes(value.toLocaleLowerCase())
+    const filteredBoxes = boxList.filter(
+      (box) =>
+        // Filter by box number
+        box.boxNumber.toString().includes(value) ||
+        // Filter by room
+        box.room.name.toLocaleLowerCase().includes(value.toLocaleLowerCase()) ||
+        // Filter by item name
+        box.contents.some((item) =>
+          item.name.toLocaleLowerCase().includes(value.toLocaleLowerCase())
         )
-      );
-      // Filter by item name
-      setBoxList(
-        boxList.filter((box) =>
-          box.contents.some((item) =>
-            item.name.toLocaleLowerCase().includes(value.toLocaleLowerCase())
-          )
-        )
-      );
-    }
+    );
+    setBoxList(value !== '' ? filteredBoxes : boxes);
   };
 
   const handleSortChange = (value: string) => {
@@ -108,16 +105,22 @@ export const SiteCard: React.FC<Props> = ({
     );
   };
 
-  window.addEventListener('keydown', (e) => {
-    if (e.key === 'Shift') {
-      setSelectMode(true);
-    }
-  });
+  useEffect(() => {
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Shift') {
+        setSelectMode(true);
+      }
+    });
 
-  window.addEventListener('keyup', (e) => {
-    if (e.key === 'Shift') {
-      setSelectMode(false);
-    }
+    window.addEventListener('keyup', (e) => {
+      if (e.key === 'Shift') {
+        setSelectMode(false);
+      }
+    });
+    return () => {
+      window.removeEventListener('keydown', () => null);
+      window.removeEventListener('keyup', () => null);
+    };
   });
 
   const handleSelectModeChange = (value: boolean) => {
@@ -148,7 +151,7 @@ export const SiteCard: React.FC<Props> = ({
         </div>
       </header>
       <div className={styles['content']}>
-        <SiteCardFilter
+        <SiteCardActionBar
           onFilterChange={handleFilterChange}
           onSortChange={handleSortChange}
           onViewChange={setView}
@@ -157,8 +160,17 @@ export const SiteCard: React.FC<Props> = ({
           sortValue={sort}
           viewValue={view}
           selectModeEnabled={selectMode}
+          selectedBoxes={selectedBoxes.map((box) => box.uuid)}
         />
-        <BoxGrid boxes={boxList} selectModeEnabled={selectMode} />
+        {rooms.length > 0 ? (
+          <BoxGrid
+            boxes={boxList}
+            selectModeEnabled={selectMode}
+            onSelectedBoxes={setSelectedBoxes}
+          />
+        ) : (
+          <span>This site has no rooms!</span>
+        )}
       </div>
     </section>
   );

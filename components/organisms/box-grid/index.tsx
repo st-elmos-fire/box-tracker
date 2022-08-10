@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 /* Components */
-import { BoxPreview, AddNewBox } from 'components';
+import { BoxPreview, AddNewBox, Modal, Card, AddBoxForm } from 'components';
 
 /* Types */
 import { Box } from 'lib/types/box';
@@ -15,6 +15,10 @@ interface Props extends React.ComponentProps<'ul'> {
    * Toggle the select mode
    */
   selectModeEnabled: boolean;
+  /**
+   * The onSelectBox callback
+   */
+  onSelectedBoxes: (boxes: Box[]) => void;
 }
 
 /* Stylesheet */
@@ -26,12 +30,14 @@ import styles from './styles.module.scss';
 export const BoxGrid: React.FC<Props> = ({
   boxes,
   selectModeEnabled,
+  onSelectedBoxes,
   className,
   ...props
 }: Props) => {
   const [boxList, setBoxList] = useState(boxes);
   const [selectedBoxes, setSelectedBoxes] = useState<Box[]>([]);
   const [selectMode, setSelectMode] = useState(selectModeEnabled);
+  const [addBoxModalOpen, setAddBoxModalOpen] = useState(false);
 
   useEffect(() => {
     setBoxList(boxes);
@@ -41,6 +47,10 @@ export const BoxGrid: React.FC<Props> = ({
     setSelectMode(selectModeEnabled);
   }, [selectModeEnabled]);
 
+  useEffect(() => {
+    onSelectedBoxes(selectedBoxes);
+  }, [selectedBoxes]);
+
   const handleClick = (box: Box) => {
     if (selectMode) {
       if (selectedBoxes.includes(box)) {
@@ -48,8 +58,20 @@ export const BoxGrid: React.FC<Props> = ({
       } else {
         setSelectedBoxes([...selectedBoxes, box]);
       }
-      console.log('Selected boxes: ', selectedBoxes);
     }
+  };
+
+  const AddBoxModal = () => {
+    return (
+      <Modal isOpen={addBoxModalOpen} setIsOpen={setAddBoxModalOpen}>
+        <Card>
+          <Card.Header>Add new box</Card.Header>
+          <Card.Body>
+            <AddBoxForm />
+          </Card.Body>
+        </Card>
+      </Modal>
+    );
   };
 
   return (
@@ -84,7 +106,7 @@ export const BoxGrid: React.FC<Props> = ({
               {...boxData}
               className={styles['box-preview']}
               onClick={() => handleClick(box)}
-              selected={boxSelected}
+              selected={selectMode && boxSelected}
               title={
                 selectMode
                   ? `${boxSelected ? 'Remove from' : 'Add to'} box selection`

@@ -1,0 +1,52 @@
+.site-card-action-bar {
+  display: grid;
+  grid-template-rows: max-content max-content;
+}
+
+.nav-bar {
+  background-color: $col-grey-400;
+  padding: padding(.3) padding(1.5);
+}
+
+.nav-bar ul{
+  display: flex;
+  align-items: center;
+  gap: spacing(1);
+}
+
+.filter-bar {
+  display: grid;
+  grid-template-columns: 2fr auto;
+  align-items: center;
+  gap: spacing(3);
+  padding: padding(.5) padding(1.5);
+}
+
+.left{
+  justify-self: start;
+  display: grid;
+  grid-template-columns: 200px 100px;
+  gap: spacing(1);
+}
+
+.right {
+  justify-self: end;
+  display: grid;
+  justify-items: end;
+}
+
+.input-filter, .input-sort {
+  margin-bottom: 0;
+}
+
+.input-sort select{
+  min-width: unset;
+  width: 100px;
+}
+
+.select-mode {
+  display: grid;
+  grid-template-columns: max-content max-content max-content;
+  align-items: center;
+  gap: spacing(1);
+}

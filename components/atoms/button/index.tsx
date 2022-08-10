@@ -57,6 +57,10 @@ export interface Props extends React.ComponentProps<'button'> {
    */
   circular?: boolean;
   /**
+   * Is the button active?
+   */
+  active?: boolean;
+  /**
    * Shows a loading indicator instead of text.
    */
   loading?: boolean;
@@ -107,6 +111,7 @@ export const Button: React.FC<Props> = ({
   disabled,
   variant = 'primary',
   circular = false,
+  active = false,
   ...props
 }: Props) => {
   const buttonType = (): 'button' | 'submit' | 'reset' | undefined => {
@@ -134,6 +139,7 @@ export const Button: React.FC<Props> = ({
           [styles['loading']]: loading
         },
         circular && styles['circular'],
+        active && styles['active'],
         className
       )}
       tabIndex={disabled ? -1 : 0}

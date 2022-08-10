@@ -1,6 +1,6 @@
-import { MdSearch } from 'react-icons/md';
 import React, { useState } from 'react';
-import { Button, InputFactory } from 'components';
+
+import { Button, InputFactory, Icons as Icon } from 'components';
 
 // Import Stylesheet
 import styles from './styles.module.scss';
@@ -48,12 +48,13 @@ export const InputSearch: React.FC<Props> = ({
         }}
       />
       <Button
-        label={`Search ${placeholder}`}
+        label={`Search`}
         className={styles['button']}
         iconOnly
+        variant="primary"
         onClick={() => onSubmit(searchTerm)}
       >
-        <MdSearch fontSize="large" />
+        <Icon.Search />
       </Button>
     </div>
   );
