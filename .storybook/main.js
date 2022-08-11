@@ -14,7 +14,12 @@ module.exports = {
     interactionsDebugger: true
   },
   stories: ['../components/**/*.stories.mdx', '../pages/**/*.stories.mdx'],
-  addons: ['@storybook/addon-essentials'],
+  addons: [
+    '@storybook/addon-essentials',
+    '@storybook/addon-a11y',
+    '@storybook/addon-interactions',
+    'storybook-addon-performance/register'
+  ],
   staticDirs: [
     { from: '../public', to: '/' },
     { from: '../lib/mocks', to: '/mocks' }
